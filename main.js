@@ -73,11 +73,11 @@ function renderStatusBadge(status) {
 
 function generateStandardHTML(item, isRightAligned, year) {
     const cardSideClasses = isRightAligned 
-        ? 'md:w-5/12 order-2 md:order-1 flex justify-end pr-16 relative right-aligned' 
-        : 'md:w-5/12 order-2 md:order-2 flex justify-start pl-16 relative left-aligned';
+        ? 'md:w-5/12 order-2 md:order-1 flex justify-end px-4 md:pl-0 md:pr-8 relative right-aligned' 
+        : 'md:w-5/12 order-2 md:order-2 flex justify-start px-4 md:pr-0 md:pl-8 relative left-aligned';
     const yearSideClasses = isRightAligned
-        ? 'md:w-5/12 order-1 md:order-2 pl-16 flex items-center'
-        : 'md:w-5/12 order-1 md:order-1 pr-16 flex justify-end items-center';
+        ? 'md:w-5/12 order-1 md:order-2 pl-8 flex items-center'
+        : 'md:w-5/12 order-1 md:order-1 pr-8 flex justify-end items-center';
 
     const linkHtml = item.link ? `
         <a href="${item.link}" target="_blank" class="block mt-4 text-xs font-medium text-${item.product} hover:text-white transition-colors flex items-center gap-1">
@@ -119,8 +119,8 @@ function generateStandardHTML(item, isRightAligned, year) {
 
 function generateFeaturedHTML(item, isRightAligned, year) {
     const yearSideClasses = isRightAligned
-        ? 'md:w-5/12 order-1 md:order-2 pl-16 flex items-center'
-        : 'md:w-5/12 order-1 md:order-1 pr-16 flex justify-end items-center';
+        ? 'md:w-5/12 order-1 md:order-2 pl-8 flex items-center'
+        : 'md:w-5/12 order-1 md:order-1 pr-8 flex justify-end items-center';
 
     const linkHtml = item.link ? `
          <a href="${item.link}" target="_blank" class="w-full nuke-btn py-3 rounded text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn mt-4 hover:brightness-110 transition-all">
@@ -142,7 +142,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
         <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
             ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker text-nuke opacity-50">${year}</span></div>` : ''}
             <div class="milestone-dot text-nuke" style="box-shadow: 0 0 20px rgba(245,176,38,0.5); border-color: #f5b026;"></div>
-            <div class="md:w-5/12 order-2 md:order-2 flex justify-start pl-16 relative left-aligned">
+            <div class="md:w-5/12 order-2 md:order-2 flex justify-start px-4 md:pr-0 md:pl-8 relative left-aligned">
                 <div class="node-connector bg-nuke" style="width: 64px;"></div>
                 <div class="w-full max-w-2xl card-base bg-[#0f0f0f] border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_0_40px_-10px_rgba(245,176,38,0.1)] card-nuke">
                     <div class="h-64 relative bg-[#1a1a1a] border-b border-white/5 overflow-hidden">

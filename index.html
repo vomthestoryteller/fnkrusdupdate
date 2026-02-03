@@ -125,7 +125,7 @@
         .node-connector {
             position: absolute;
             top: 50%;
-            width: 48px;
+            width: 32px;
             height: 1px;
             background: #262626;
             z-index: 5;
@@ -134,7 +134,7 @@
         .right-aligned .node-connector { left: 0; transform: translateX(-100%); }
         .left-aligned .node-connector { right: 0; transform: translateX(100%); }
         .group:hover .node-connector {
-            width: 64px;
+            width: 48px;
             background: #444;
         }::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0A0A0A; }
@@ -179,6 +179,15 @@
             border-color: #c43c3c;
             box-shadow: 0 0 15px rgba(196, 60, 60, 0.2);
             color: #c43c3c;
+        }
+
+        @media (min-width: 1024px) {
+            .node-connector {
+                width: 48px;
+            }
+            .group:hover .node-connector {
+                width: 64px;
+            }
         }
 
         @media (max-width: 768px) {
