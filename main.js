@@ -73,8 +73,8 @@ function renderStatusBadge(status) {
 
 function generateStandardHTML(item, isRightAligned, year) {
     const cardSideClasses = isRightAligned 
-        ? 'md:w-5/12 order-2 md:order-1 flex justify-end px-4 md:pl-0 md:pr-8 relative right-aligned' 
-        : 'md:w-5/12 order-2 md:order-2 flex justify-start px-4 md:pr-0 md:pl-8 relative left-aligned';
+        ? 'md:w-5/12 order-2 md:order-1 flex justify-center md:justify-end px-4 md:pl-0 md:pr-8 relative right-aligned' 
+        : 'md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-4 md:pr-0 md:pl-8 relative left-aligned';
     const yearSideClasses = isRightAligned
         ? 'md:w-5/12 order-1 md:order-2 pl-8 flex items-center'
         : 'md:w-5/12 order-1 md:order-1 pr-8 flex justify-end items-center';
@@ -105,7 +105,7 @@ function generateStandardHTML(item, isRightAligned, year) {
                     </div>
                     <h4 class="text-lg font-medium text-gray-200 mb-2">${item.title}</h4>
                     <p class="text-gray-400 text-sm leading-relaxed mb-4">${item.description}</p>
-                    <div class="flex gap-2">
+                    <div class="flex flex-wrap gap-2">
                         ${item.tags.map(tag => `<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">${tag}</span>`).join('')}
                     </div>
                     ${linkHtml}
@@ -142,7 +142,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
         <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
             ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker text-nuke opacity-50">${year}</span></div>` : ''}
             <div class="milestone-dot text-nuke" style="box-shadow: 0 0 20px rgba(245,176,38,0.5); border-color: #f5b026;"></div>
-            <div class="md:w-5/12 order-2 md:order-2 flex justify-start px-4 md:pr-0 md:pl-8 relative left-aligned">
+            <div class="md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-4 md:pr-0 md:pl-8 relative left-aligned">
                 <div class="node-connector bg-nuke" style="width: 64px;"></div>
                 <div class="w-full max-w-2xl card-base bg-[#0f0f0f] border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_0_40px_-10px_rgba(245,176,38,0.1)] card-nuke">
                     <div class="h-64 relative bg-[#1a1a1a] border-b border-white/5 overflow-hidden">
