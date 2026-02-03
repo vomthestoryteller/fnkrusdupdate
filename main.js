@@ -87,7 +87,7 @@ function generateStandardHTML(item, isRightAligned, year) {
     ` : '';
 
     return `
-        <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+        <div class="relative flex flex-col md:flex-row items-center justify-between py-12 group transition-opacity duration-500">
             ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker">${year}</span></div>` : ''}
             <div class="${cardSideClasses}">
                 <div class="node-connector"></div>
@@ -171,7 +171,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
         : `<img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/>`;
 
     return `
-        <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+        <div class="relative flex flex-col md:flex-row items-center justify-between py-12 group transition-opacity duration-500">
             ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker text-${product} opacity-50">${year}</span></div>` : ''}
             <div class="milestone-dot text-${product}" style="box-shadow: 0 0 20px rgba(${rgb},0.5); border-color: ${hex};"></div>
             <div class="${cardSideClasses}">
