@@ -65,6 +65,12 @@ function renderIcon(icon, product) {
     return `<span class="material-symbols-outlined text-${product} text-xl">${icon}</span>`;
 }
 
+function renderStatusBadge(status) {
+    if (!status || status === 'Hidden') return '';
+    const colorClass = status === 'Beta' ? 'bg-nuke text-black' : 'bg-white text-black';
+    return `<div class="absolute top-4 right-4 ${colorClass} text-xs font-bold px-2 py-1 rounded shadow-sm">${status.toUpperCase()}</div>`;
+}
+
 function generateStandardHTML(item, isRightAligned, year) {
     const cardSideClasses = isRightAligned 
         ? 'md:w-5/12 order-2 md:order-1 flex justify-end pr-16 relative right-aligned' 
@@ -141,31 +147,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
                 <div class="w-full max-w-xl card-base bg-[#0f0f0f] border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_0_40px_-10px_rgba(245,176,38,0.1)] card-nuke">
                     <div class="h-64 relative bg-[#1a1a1a] border-b border-white/5 overflow-hidden">
                         ${imageHtml}
-                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <div class="flex items-center gap-1 opacity-90 scale-90 md:scale-100">
-                                <div class="flex flex-col items-center gap-1">
-                                    <div class="w-24 h-8 bg-[#2a2a2a] border border-nuke/40 rounded flex items-center px-2 shadow-lg">
-                                        <span class="w-2 h-2 rounded-full bg-nuke mr-2"></span>
-                                        <span class="text-[10px] font-mono text-gray-300">GeoImport</span>
-                                    </div>
-                                </div>
-                                <div class="w-8 h-px bg-nuke/50"></div>
-                                <div class="flex flex-col items-center gap-1">
-                                    <div class="w-24 h-8 bg-[#2a2a2a] border border-nuke/40 rounded flex items-center px-2 shadow-lg">
-                                        <span class="w-2 h-2 rounded-full bg-nuke mr-2"></span>
-                                        <span class="text-[10px] font-mono text-gray-300">GeoMerge</span>
-                                    </div>
-                                </div>
-                                <div class="w-8 h-px bg-nuke/50"></div>
-                                <div class="flex flex-col items-center gap-1">
-                                    <div class="w-24 h-8 bg-[#2a2a2a] border border-nuke/40 rounded flex items-center px-2 shadow-lg">
-                                        <span class="w-2 h-2 rounded-full bg-nuke mr-2"></span>
-                                        <span class="text-[10px] font-mono text-gray-300">GeoScene</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-nuke text-black text-xs font-bold px-2 py-1 rounded shadow-sm">BETA</div>
+                        ${renderStatusBadge(item.status)}
                     </div>
                     <div class="p-8">
                         <div class="flex items-center gap-4 mb-6">

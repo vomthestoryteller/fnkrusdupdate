@@ -44,7 +44,8 @@
         "icon": "images/ICON_NUKE_yellow.svg",
         "featured": true,
         "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
-        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk"
+        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
+        "status": "Beta"
     },
     {
         "product": "nuke",
