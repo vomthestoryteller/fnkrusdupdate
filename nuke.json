@@ -8,7 +8,7 @@
         "title": "Hydra Support",
         "description": "Ability to render USD scenes via Hydra directly within Nuke's scanline renderer via ReadGeo.",
         "tags": ["ReadGeo", "USD 20.08"],
-        "icon": "science",
+        "icon": "images/ICON_NUKE_yellow.svg",
         "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.0.html"
     },
     {
@@ -19,9 +19,10 @@
         "title": "Nuke 14.0: A New Era for 3D",
         "description": "The beta release of a completely new 3D system. Designed to handle massive USD datasets with native performance and fidelity.",
         "tags": ["GeoImport", "GeoMerge", "GeoScene", "USD 22.05"],
-        "icon": "science",
+        "icon": "images/ICON_NUKE_yellow.svg",
         "featured": true,
-        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCva_lfywPNZkdam5p65fLytG1fAbdDlMYo35ybGw_xmu40fruW7i-nTAPFj-csqOWPTNjLLHNQ1dzDgkLvtPvzoG1ZFH7dF16RV6cyu8s9UBQIrcQOFMqGVwBMFGDHepGGRxzm90txEqvo8K8GqvM5bRNIKbO9noSLdP5Dpvqg2DRLK2blfGTtob6suAz9FGMteFdpYe0_vV5U3VVLkWPEZdN-rt21hHkOyZnQy-2Xh1b99gsObsFQTSR5GJR7SXL9Qv7PUr5XcPI"
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCva_lfywPNZkdam5p65fLytG1fAbdDlMYo35ybGw_xmu40fruW7i-nTAPFj-csqOWPTNjLLHNQ1dzDgkLvtPvzoG1ZFH7dF16RV6cyu8s9UBQIrcQOFMqGVwBMFGDHepGGRxzm90txEqvo8K8GqvM5bRNIKbO9noSLdP5Dpvqg2DRLK2blfGTtob6suAz9FGMteFdpYe0_vV5U3VVLkWPEZdN-rt21hHkOyZnQy-2Xh1b99gsObsFQTSR5GJR7SXL9Qv7PUr5XcPI",
+        "content": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },
     {
         "product": "nuke",
@@ -31,6 +32,6 @@
         "title": "Native USD Nodes",
         "description": "Introduction of native 3D nodes that process USD data directly without translation.",
         "tags": ["GeoReference", "USD 22.11"],
-        "icon": "science"
+        "icon": "images/ICON_NUKE_yellow.svg"
     }
 ]

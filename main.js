@@ -58,6 +58,13 @@ function renderTimeline(filter) {
     });
 }
 
+function renderIcon(icon, product) {
+    if (icon.includes('/') || icon.includes('.')) {
+        return `<img src="${icon}" alt="${product} icon" class="w-6 h-6 object-contain">`;
+    }
+    return `<span class="material-symbols-outlined text-${product} text-xl">${icon}</span>`;
+}
+
 function generateStandardHTML(item, isRightAligned, year) {
     const cardSideClasses = isRightAligned 
         ? 'md:w-5/12 order-2 md:order-1 flex justify-end pr-16 relative right-aligned' 
@@ -82,7 +89,7 @@ function generateStandardHTML(item, isRightAligned, year) {
                     <div class="flex items-start justify-between mb-6">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded bg-${item.product}/10 border border-${item.product}/20 flex items-center justify-center">
-                                <span class="material-symbols-outlined text-${item.product} text-xl">${item.icon}</span>
+                                ${renderIcon(item.icon, item.product)}
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold text-white tracking-tight">${item.product.charAt(0).toUpperCase() + item.product.slice(1)} <span class="text-${item.product} font-mono text-sm ml-1 opacity-80">${item.version}</span></h3>
@@ -121,6 +128,10 @@ function generateFeaturedHTML(item, isRightAligned, year) {
         </button>
     `;
 
+    const imageHtml = item.content 
+        ? `<a href="${item.content}" target="_blank" class="block w-full h-full cursor-pointer group-image-link"><img alt="${item.title}" class="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:scale-105 transition-transform duration-700" src="${item.image}"/></a>`
+        : `<img alt="${item.title}" class="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:scale-105 transition-transform duration-700" src="${item.image}"/>`;
+
     return `
         <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
             ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker text-nuke opacity-50">${year}</span></div>` : ''}
@@ -129,7 +140,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
                 <div class="node-connector bg-nuke" style="width: 64px;"></div>
                 <div class="w-full max-w-xl card-base bg-[#0f0f0f] border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_0_40px_-10px_rgba(245,176,38,0.1)] card-nuke">
                     <div class="h-64 relative bg-[#1a1a1a] border-b border-white/5 overflow-hidden">
-                        <img alt="${item.title}" class="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:scale-105 transition-transform duration-700" src="${item.image}"/>
+                        ${imageHtml}
                         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <div class="flex items-center gap-1 opacity-90 scale-90 md:scale-100">
                                 <div class="flex flex-col items-center gap-1">
@@ -159,7 +170,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
                     <div class="p-8">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-12 h-12 rounded bg-nuke/10 border border-nuke/30 flex items-center justify-center shadow-[0_0_15px_rgba(245,176,38,0.2)]">
-                                <span class="material-symbols-outlined text-nuke text-2xl">${item.icon}</span>
+                                ${renderIcon(item.icon, item.product)}
                             </div>
                             <div>
                                 <h3 class="text-2xl font-bold text-white tracking-tight">Nuke <span class="text-nuke font-mono text-lg ml-1">${item.version}</span></h3>
