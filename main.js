@@ -166,7 +166,14 @@ function generateFeaturedHTML(item, isRightAligned, year) {
     // If image is empty string in JSON, we might want to handle it, but for now assuming updated JSONs will be populated or handled gracefully.
     const imageSrc = item.image || 'https://via.placeholder.com/800x400';
     const imageHtml = item.content 
-        ? `<a href="${item.content}" target="_blank" class="block w-full h-full cursor-pointer group-image-link"><img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/></a>`
+        ? `<a href="${item.content}" target="_blank" class="block w-full h-full cursor-pointer group-image-link relative">
+             <img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/>
+             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                 <div class="w-16 h-16 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                     <span class="material-symbols-outlined text-white text-6xl ml-[-1px] opacity-90">play_arrow</span>
+                 </div>
+             </div>
+           </a>`
         : `<img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/>`;
 
     return `
