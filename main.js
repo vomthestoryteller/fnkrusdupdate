@@ -71,6 +71,20 @@ function renderStatusBadge(status, product) {
     return `<div class="absolute top-4 right-4 ${colorClass} text-xs font-bold px-2 py-1 rounded shadow-sm">${status.toUpperCase()}</div>`;
 }
 
+function getYouTubeId(url) {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+}
+
+window.loadVideo = function(container, videoId) {
+    container.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="absolute inset-0 w-full h-full"></iframe>`;
+    // Remove hover effects or cursor pointer if needed, though replacing innerHTML mostly handles it.
+    container.removeAttribute('onclick');
+    container.classList.remove('cursor-pointer');
+};
+
 function generateStandardHTML(item, isRightAligned, year) {
     const cardSideClasses = isRightAligned 
         ? 'md:w-5/12 order-2 md:order-1 flex justify-center md:justify-end px-4 md:pl-0 md:pr-8 relative right-aligned' 
@@ -161,20 +175,33 @@ function generateFeaturedHTML(item, isRightAligned, year) {
         </button>
     `;
 
-    // Handle image if it exists, otherwise placeholder or skip
-    // The previous code had item.content wrapping the image.
-    // If image is empty string in JSON, we might want to handle it, but for now assuming updated JSONs will be populated or handled gracefully.
     const imageSrc = item.image || 'https://via.placeholder.com/800x400';
-    const imageHtml = item.content 
-        ? `<a href="${item.content}" target="_blank" class="block w-full h-full cursor-pointer group-image-link relative">
-             <img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/>
-             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                 <div class="w-16 h-16 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
-                     <span class="material-symbols-outlined text-white text-6xl ml-[-1px] opacity-90">play_arrow</span>
+    const videoId = getYouTubeId(item.content);
+    let imageHtml;
+
+    if (videoId) {
+        imageHtml = `
+            <div onclick="loadVideo(this, '${videoId}')" class="block w-full h-full cursor-pointer group-image-link relative">
+                 <img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/>
+                 <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                     <div class="w-16 h-16 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                         <span class="material-symbols-outlined text-white text-6xl ml-[-1px] opacity-90">play_arrow</span>
+                     </div>
                  </div>
-             </div>
-           </a>`
-        : `<img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/>`;
+            </div>`;
+    } else if (item.content) {
+        imageHtml = `
+            <a href="${item.content}" target="_blank" class="block w-full h-full cursor-pointer group-image-link relative">
+                 <img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/>
+                 <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                     <div class="w-16 h-16 bg-black/50 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+                         <span class="material-symbols-outlined text-white text-6xl ml-[-1px] opacity-90">play_arrow</span>
+                     </div>
+                 </div>
+            </a>`;
+    } else {
+        imageHtml = `<img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/>`;
+    }
 
     return `
         <div class="relative flex flex-col md:flex-row items-center justify-between py-12 gap-6 md:gap-0 group transition-opacity duration-500">
