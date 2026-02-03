@@ -80,6 +80,8 @@
             background: #121212;
             border: 1px solid #262626;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 5;
         }
         .card-base:hover {
             transform: translateY(-4px);
@@ -177,6 +179,12 @@
             border-color: #c43c3c;
             box-shadow: 0 0 15px rgba(196, 60, 60, 0.2);
             color: #c43c3c;
+        }
+
+        @media (max-width: 768px) {
+            .milestone-dot {
+                display: none;
+            }
         }
     </style>
 
