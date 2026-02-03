@@ -136,6 +136,10 @@ function getProductHexColor(product) {
 }
 
 function generateFeaturedHTML(item, isRightAligned, year) {
+    const cardSideClasses = isRightAligned 
+        ? 'md:w-5/12 order-2 md:order-1 flex justify-center md:justify-end px-4 md:pl-0 md:pr-8 relative right-aligned' 
+        : 'md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-4 md:pr-0 md:pl-8 relative left-aligned';
+    
     const yearSideClasses = isRightAligned
         ? 'md:w-5/12 order-1 md:order-2 pl-8 flex items-center'
         : 'md:w-5/12 order-1 md:order-1 pr-8 flex justify-end items-center';
@@ -170,7 +174,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
         <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
             ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker text-${product} opacity-50">${year}</span></div>` : ''}
             <div class="milestone-dot text-${product}" style="box-shadow: 0 0 20px rgba(${rgb},0.5); border-color: ${hex};"></div>
-            <div class="md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-4 md:pr-0 md:pl-8 relative left-aligned">
+            <div class="${cardSideClasses}">
                 <div class="node-connector bg-${product}" style="width: 64px;"></div>
                 <div class="w-full max-w-2xl card-base bg-white border-${product}/30 rounded-xl relative overflow-hidden group-hover:border-${product}/60 transition-colors shadow-[0_4px_20px_-5px_rgba(${rgb},0.1)] card-${product}">
                     <div class="h-64 relative bg-gray-100 border-b border-black/5 overflow-hidden">

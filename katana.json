@@ -133,12 +133,12 @@
         "quarter": "Q4 2022",
         "title": "Native USD 시대의 개막",
         "description": "네이티브 USD 노드는 가독성을 높이기 위해 Node Graph 탭에서 연한 파란색 배경과 좌측의 파란색 띠(Stripe)로 표시되어 일반 Katana 노드와 구별됩니다. 해당 노드의 배경색은 Node Graph 탭 내 Colors 메뉴에서 추가로 변경할 수 있습니다.",
-        "tags": ["USD 22.05","NativeUSD", "OpenVDB"],
+        "tags": ["USD 23.05","NativeUSD", "OpenVDB"],
         "icon": "images/ICON_KATANA_yellow.svg",
-        "link": "https://learn.foundry.com/katana/Content/release_notes/whats_new_6.0.html",
+        "link": "https://learn.foundry.com/katana/Content/release_notes/whats_new_7.0.html",
         "featured": true,
-        "image": "https://img.youtube.com/vi/h4JCGjTzvzw/maxresdefault.jpg",
-        "content": "https://www.youtube.com/watch?v=h4JCGjTzvzw"
+        "image": "https://img.youtube.com/vi/HSA8gzX8yzs/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=HSA8gzX8yzs"
     },
     {
         "product": "katana",
@@ -147,7 +147,7 @@
         "quarter": "Q4 2024",
         "title": "USD Native Exporting",
         "description": "이제 Katana에서 USD 내보내기(Export)가 가능합니다. 네이티브 USD 스테이지에서의 내보내기 기능은 두 개의 새로운 네이티브 USD 노드인 UsdLayerDefine과 UsdLayerExport를 중심으로 구현되었습니다.",
-        "tags": ["USD 22.05","USDExport", "KatanaToUSD", "PatternBasedCollections"],
+        "tags": ["USD 24.05","USDExport", "KatanaToUSD", "PatternBasedCollections"],
         "icon": "images/ICON_KATANA_yellow.svg",
         "link": "https://learn.foundry.com/katana/Content/release_notes/whats_new_8.0.html",
         "featured": true,

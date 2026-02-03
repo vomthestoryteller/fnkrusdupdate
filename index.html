@@ -17,10 +17,9 @@
                         "surface-card": "#FFFFFF",
                         "border-dim": "#E5E7EB",
                         "primary": "#2b8cee",
-                        "nuke": "#f5b026",
-                        "nuke-glow": "#ff9d00",
-                        "katana": "#e3e300", 
-                        "mari": "#c43c3c"
+                        "nuke": "#fcb434",
+                        "katana": "#fcb434", 
+                        "mari": "#fcb434"
                     },
                     fontFamily: {
                         "sans": ["Avenir", "Inter", "sans-serif"],
@@ -126,19 +125,20 @@
             border-color: currentColor;
         }
         .node-connector {
+            display: none;
             position: absolute;
             top: 50%;
             width: 32px;
-            height: 1px;
-            background: #E5E7EB;
+            height: 3px;
+            background: #FCB434;
             z-index: 5;
             transition: width 0.3s ease, background 0.3s ease;
         }
-        .right-aligned .node-connector { left: 0; transform: translateX(-100%); }
-        .left-aligned .node-connector { right: 0; transform: translateX(100%); }
+        .right-aligned .node-connector { left: auto; right: 0; transform: translateX(100%); }
+        .left-aligned .node-connector { right: auto; left: 0; transform: translateX(-100%); }
         .group:hover .node-connector {
             width: 48px;
-            background: #D1D5DB;
+            background: #FCB434;
         }::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #FFFFFF; }
         ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 3px; }
