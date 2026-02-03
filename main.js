@@ -91,7 +91,7 @@ function generateStandardHTML(item, isRightAligned, year) {
             ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker">${year}</span></div>` : ''}
             <div class="${cardSideClasses}">
                 <div class="node-connector"></div>
-                <div class="w-full max-w-md card-base card-${item.product} p-8 rounded-xl relative">
+                <div class="w-full max-w-2xl card-base card-${item.product} p-8 rounded-xl relative">
                     <div class="flex items-start justify-between mb-6">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded bg-${item.product}/10 border border-${item.product}/20 flex items-center justify-center">
@@ -144,7 +144,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
             <div class="milestone-dot text-nuke" style="box-shadow: 0 0 20px rgba(245,176,38,0.5); border-color: #f5b026;"></div>
             <div class="md:w-5/12 order-2 md:order-2 flex justify-start pl-16 relative left-aligned">
                 <div class="node-connector bg-nuke" style="width: 64px;"></div>
-                <div class="w-full max-w-xl card-base bg-[#0f0f0f] border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_0_40px_-10px_rgba(245,176,38,0.1)] card-nuke">
+                <div class="w-full max-w-2xl card-base bg-[#0f0f0f] border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_0_40px_-10px_rgba(245,176,38,0.1)] card-nuke">
                     <div class="h-64 relative bg-[#1a1a1a] border-b border-white/5 overflow-hidden">
                         ${imageHtml}
                         ${renderStatusBadge(item.status)}
