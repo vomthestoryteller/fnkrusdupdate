@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Foundry USD Evolution Landing Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "bg-main": "#0A0A0A",
+                        "surface-card": "#121212",
+                        "border-dim": "#262626",
+                        "primary": "#2b8cee",
+                        "nuke": "#f5b026",
+                        "nuke-glow": "#ff9d00",
+                        "katana": "#e3e300", 
+                        "mari": "#c43c3c"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #262626 1px, transparent 1px), linear-gradient(to bottom, #262626 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.6' },
+                            '50%': { opacity: '0.3' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            color: #e5e5e5;
+        }
+        .timeline-wire {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: #333;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        .timeline-wire-active {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%; 
+            background: linear-gradient(to bottom, transparent, #f5b026, #e3e300, #c43c3c, #2b8cee, transparent);
+            transform: translateX(-50%);
+            z-index: 1;
+            opacity: 0.6;
+            box-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+        .card-base {
+            background: #121212;
+            border: 1px solid #262626;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-base:hover {
+            transform: translateY(-4px);
+            border-color: #404040;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+        .card-nuke:hover { border-color: rgba(245, 176, 38, 0.4); box-shadow: 0 0 30px -10px rgba(245, 176, 38, 0.15); }
+        .card-katana:hover { border-color: rgba(227, 227, 0, 0.4); box-shadow: 0 0 30px -10px rgba(227, 227, 0, 0.15); }
+        .card-mari:hover { border-color: rgba(196, 60, 60, 0.4); box-shadow: 0 0 30px -10px rgba(196, 60, 60, 0.15); }
+        .year-marker {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #262626;
+            font-size: 5rem;
+            line-height: 1;
+            user-select: none;
+            transition: color 0.5s ease;
+        }
+        .group:hover .year-marker {
+            color: #333;
+        }
+        .milestone-dot {
+            width: 12px;
+            height: 12px;
+            background: #0A0A0A;
+            border: 2px solid #444;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        .group:hover .milestone-dot {
+            background: #fff;
+            transform: translate(-50%, -50%) scale(1.2);
+            box-shadow: 0 0 15px currentColor;
+            border-color: currentColor;
+        }
+        .node-connector {
+            position: absolute;
+            top: 50%;
+            width: 48px;
+            height: 1px;
+            background: #262626;
+            z-index: 5;
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+        .right-aligned .node-connector { left: 0; transform: translateX(-100%); }
+        .left-aligned .node-connector { right: 0; transform: translateX(100%); }
+        .group:hover .node-connector {
+            width: 64px;
+            background: #444;
+        }::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0A0A0A; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        .nuke-btn {
+            background: linear-gradient(180deg, #383838 0%, #2b2b2b 100%);
+            border: 1px solid #000;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.5);
+            color: #ccc;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+        .nuke-btn:hover {
+            background: linear-gradient(180deg, #444 0%, #333 100%);
+            color: #fff;
+        }
+        .nuke-btn:active {
+            background: #222;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }.filter-btn {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-1px);
+        }
+        .filter-btn-nuke:hover, .filter-btn-nuke.active {
+            border-color: #f5b026;
+            box-shadow: 0 0 15px rgba(245, 176, 38, 0.2);
+            color: #f5b026;
+        }
+        .filter-btn-katana:hover, .filter-btn-katana.active {
+            border-color: #e3e300;
+            box-shadow: 0 0 15px rgba(227, 227, 0, 0.2);
+            color: #e3e300;
+        }
+        .filter-btn-mari:hover, .filter-btn-mari.active {
+            border-color: #c43c3c;
+            box-shadow: 0 0 15px rgba(196, 60, 60, 0.2);
+            color: #c43c3c;
+        }
+    </style>
+<script>
+        function filterTimeline(product) {
+            const allItems = document.querySelectorAll('.group');
+            allItems.forEach(item => {
+                const isHeader = item.querySelector('.year-marker');
+                // Always keep year markers for structure, or could hide them if empty
+                // Simple logic: if product is 'all', show all. Else check if card inside has class card-[product]
+                if (product === 'all') {
+                    item.style.display = 'flex';
+                    item.style.opacity = '1';
+                    return;
+                }
+                const card = item.querySelector('.card-base');
+                if (!card) {
+                   // This is just a year marker row without a card, keep it visible or hide? 
+                   // The structure provided has year markers alongside cards or in empty rows.
+                   // For visual clarity, let's just fade out non-matching rows
+                   return; 
+                }
+                if (card.classList.contains(`card-${product}`)) {
+                     item.style.display = 'flex';
+                     setTimeout(() => item.style.opacity = '1', 50);
+                } else {
+                     item.style.opacity = '0.1'; // Dim instead of remove to keep timeline structure
+                     // item.style.display = 'none'; // Uncomment to fully remove
+                }
+            });
+            // Update active state of buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if(product !== 'all') {
+                document.querySelector(`.filter-btn-${product}`).classList.add('active');
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased selection:bg-nuke selection:text-black overflow-x-hidden">
+<header class="relative min-h-[80vh] flex items-center justify-center overflow-hidden border-b border-border-dim">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-bg-main via-bg-main/90 to-bg-main z-10"></div>
+<img alt="VFX Background" class="w-full h-full object-cover opacity-30 grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkRHmWib1ALW2tbQSj9z334rhpWciR9vtkD3SjP7SYWygA069N7tWjJx7eTpad63umtnh3YRH-5uqQLe4Z_2powUAA6PmyGveJg-BH0TqENYhnydURsNPM_9Tm-KUSk9OvFkTxtvkyh6pV8Su80Geaqc0-yeVxDV771JyjXucxy_r-R8kk7ZpTyGLpKdAjLZ8eblxuqt03MUptWycow0UTVsqOqXrjs68XC1IkQAfr8X2vdtUUazkdRw9m4nSztawWiDFJgZpoauo"/>
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDQwaDQwVjBIMHY0MHptMS0xaDM4VjFHMXYzOHoiIGZpbGw9IiMzMzMiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
+</div>
+<div class="relative z-20 container mx-auto px-6 text-center max-w-4xl">
+<div class="mb-6 flex justify-center">
+<div class="w-12 h-12 border border-nuke/30 rounded flex items-center justify-center bg-nuke/5 backdrop-blur-sm animate-float">
+<span class="material-symbols-outlined text-nuke text-2xl">view_in_ar</span>
+</div>
+</div>
+<h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tighter leading-none text-white font-display">
+                Foundry <span class="text-transparent bg-clip-text bg-gradient-to-r from-nuke via-white to-primary">USD</span>
+</h1>
+<p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                A chronological journey through the Universal Scene Description integration across Nuke, Katana, and Mari. The backbone of the open pipeline.
+            </p>
+<div class="flex flex-wrap justify-center gap-4 mb-10">
+<button class="filter-btn filter-btn-nuke px-6 py-2 rounded-full text-sm font-medium text-gray-300 uppercase tracking-widest flex items-center gap-2" onclick="filterTimeline('nuke')">
+<span class="w-2 h-2 rounded-full bg-nuke"></span> Nuke
+    </button>
+<button class="filter-btn filter-btn-katana px-6 py-2 rounded-full text-sm font-medium text-gray-300 uppercase tracking-widest flex items-center gap-2" onclick="filterTimeline('katana')">
+<span class="w-2 h-2 rounded-full bg-katana"></span> Katana
+    </button>
+<button class="filter-btn filter-btn-mari px-6 py-2 rounded-full text-sm font-medium text-gray-300 uppercase tracking-widest flex items-center gap-2" onclick="filterTimeline('mari')">
+<span class="w-2 h-2 rounded-full bg-mari"></span> Mari
+    </button>
+<button class="filter-btn px-6 py-2 rounded-full text-sm font-medium text-gray-400 uppercase tracking-widest hover:text-white border-transparent hover:border-white/20" onclick="filterTimeline('all')">
+        Reset
+    </button>
+</div>
+<div class="flex flex-col items-center gap-6">
+<button class="px-8 py-3 rounded border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all text-sm font-medium uppercase tracking-widest text-gray-300">
+                    Explore Timeline
+                </button>
+<div class="h-16 w-px bg-gradient-to-b from-gray-700 to-transparent"></div>
+</div>
+</div>
+</header>
+<main class="relative bg-bg-main">
+<div class="absolute inset-0 pointer-events-none bg-[size:40px_40px] opacity-[0.03]" style="background-image: linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px);"></div>
+<div class="max-w-7xl mx-auto relative pb-32 pt-20">
+<div class="timeline-wire"></div>
+<div class="timeline-wire-active"></div>
+<div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+<div class="md:w-5/12 order-2 md:order-1 flex justify-end pr-16 relative right-aligned">
+<div class="node-connector"></div>
+<div class="w-full max-w-md card-base card-katana p-8 rounded-xl relative">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-katana/10 border border-katana/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-katana text-xl">swords</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Katana <span class="text-katana font-mono text-sm ml-1 opacity-80">v3.5</span></h3>
+</div>
+</div>
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-2 py-1 rounded bg-[#0f0f0f]">Q4 2019</span>
+</div>
+<h4 class="text-lg font-medium text-gray-200 mb-2">Hydra Viewer Beta</h4>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">First implementation of USD Hydra based viewport, laying the groundwork for high-fidelity, interactive lighting workflows.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">Hydra GL</span>
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">USD 19.11</span>
+</div>
+</div>
+</div>
+<div class="milestone-dot text-katana"></div>
+<div class="md:w-5/12 order-1 md:order-2 pl-16 flex items-center">
+<span class="year-marker">2019</span>
+</div>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+<div class="md:w-5/12 order-1 md:order-1 pr-16 flex justify-end items-center">
+<span class="year-marker">2020</span>
+</div>
+<div class="milestone-dot text-mari"></div>
+<div class="md:w-5/12 order-2 md:order-2 flex justify-start pl-16 relative left-aligned">
+<div class="node-connector"></div>
+<div class="w-full max-w-md card-base card-mari p-8 rounded-xl relative">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-mari/10 border border-mari/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-mari text-xl">brush</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Mari <span class="text-mari font-mono text-sm ml-1 opacity-80">v4.7</span></h3>
+</div>
+</div>
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-2 py-1 rounded bg-[#0f0f0f]">Q2 2020</span>
+</div>
+<h4 class="text-lg font-medium text-gray-200 mb-2">USD Material Export</h4>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">Exporting Arnold and Renderman shaders directly to USD, allowing texture artists to see their work in context downstream.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">Materials</span>
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">USD 20.02</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+<div class="md:w-5/12 order-2 md:order-1 flex justify-end pr-16 relative right-aligned">
+<div class="node-connector"></div>
+<div class="w-full max-w-md card-base card-katana p-8 rounded-xl relative">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-katana/10 border border-katana/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-katana text-xl">swords</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Katana <span class="text-katana font-mono text-sm ml-1 opacity-80">v4.0</span></h3>
+</div>
+</div>
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-2 py-1 rounded bg-[#0f0f0f]">Q3 2020</span>
+</div>
+<h4 class="text-lg font-medium text-gray-200 mb-2">Native USD Lighting</h4>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">Native lighting workflows directly on USD stages without translation overhead, unlocking massive scene scale.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">UsdLux</span>
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">USD 20.08</span>
+</div>
+</div>
+</div>
+<div class="milestone-dot text-katana"></div>
+<div class="md:w-5/12 order-1 md:order-2 pl-16 flex items-center">
+</div>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+<div class="md:w-5/12 order-1 md:order-1 pr-16 flex justify-end items-center">
+<span class="year-marker">2021</span>
+</div>
+<div class="milestone-dot text-nuke"></div>
+<div class="md:w-5/12 order-2 md:order-2 flex justify-start pl-16 relative left-aligned">
+<div class="node-connector"></div>
+<div class="w-full max-w-md card-base card-nuke p-8 rounded-xl relative">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-nuke/10 border border-nuke/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-nuke text-xl">science</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Nuke <span class="text-nuke font-mono text-sm ml-1 opacity-80">v13.0</span></h3>
+</div>
+</div>
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-2 py-1 rounded bg-[#0f0f0f]">Q1 2021</span>
+</div>
+<h4 class="text-lg font-medium text-gray-200 mb-2">Hydra Support</h4>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">Ability to render USD scenes via Hydra directly within Nuke's scanline renderer via ReadGeo.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">ReadGeo</span>
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">USD 20.08</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+<div class="md:w-5/12 order-2 md:order-1 flex justify-end pr-16 relative right-aligned">
+<div class="node-connector"></div>
+<div class="w-full max-w-md card-base card-katana p-8 rounded-xl relative">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-katana/10 border border-katana/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-katana text-xl">swords</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Katana <span class="text-katana font-mono text-sm ml-1 opacity-80">v5.0</span></h3>
+</div>
+</div>
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-2 py-1 rounded bg-[#0f0f0f]">Q4 2021</span>
+</div>
+<h4 class="text-lg font-medium text-gray-200 mb-2">USD Look Development</h4>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">Nodal state editing for materials and full support for USD Preview Surface shading.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">LookDev</span>
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">USD 21.05</span>
+</div>
+</div>
+</div>
+<div class="milestone-dot text-katana"></div>
+<div class="md:w-5/12 order-1 md:order-2"></div>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+<div class="md:w-5/12 order-1 md:order-1 pr-16 flex justify-end items-center">
+<span class="year-marker text-nuke opacity-50">2022</span>
+</div>
+<div class="milestone-dot text-nuke" style="box-shadow: 0 0 20px rgba(245,176,38,0.5); border-color: #f5b026;"></div>
+<div class="md:w-5/12 order-2 md:order-2 flex justify-start pl-16 relative left-aligned">
+<div class="node-connector bg-nuke" style="width: 64px;"></div>
+<div class="w-full max-w-xl card-base bg-[#0f0f0f] border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_0_40px_-10px_rgba(245,176,38,0.1)] card-nuke">
+<div class="h-64 relative bg-[#1a1a1a] border-b border-white/5 overflow-hidden">
+<img alt="Nuke 3D System" class="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCva_lfywPNZkdam5p65fLytG1fAbdDlMYo35ybGw_xmu40fruW7i-nTAPFj-csqOWPTNjLLHNQ1dzDgkLvtPvzoG1ZFH7dF16RV6cyu8s9UBQIrcQOFMqGVwBMFGDHepGGRxzm90txEqvo8K8GqvM5bRNIKbO9noSLdP5Dpvqg2DRLK2blfGTtob6suAz9FGMteFdpYe0_vV5U3VVLkWPEZdN-rt21hHkOyZnQy-2Xh1b99gsObsFQTSR5GJR7SXL9Qv7PUr5XcPI"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="flex items-center gap-1 opacity-90 scale-90 md:scale-100">
+<div class="flex flex-col items-center gap-1">
+<div class="w-24 h-8 bg-[#2a2a2a] border border-nuke/40 rounded flex items-center px-2 shadow-lg">
+<span class="w-2 h-2 rounded-full bg-nuke mr-2"></span>
+<span class="text-[10px] font-mono text-gray-300">GeoImport</span>
+</div>
+</div>
+<div class="w-8 h-px bg-nuke/50"></div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-24 h-8 bg-[#2a2a2a] border border-nuke/40 rounded flex items-center px-2 shadow-lg">
+<span class="w-2 h-2 rounded-full bg-nuke mr-2"></span>
+<span class="text-[10px] font-mono text-gray-300">GeoMerge</span>
+</div>
+</div>
+<div class="w-8 h-px bg-nuke/50"></div>
+<div class="flex flex-col items-center gap-1">
+<div class="w-24 h-8 bg-[#2a2a2a] border border-nuke/40 rounded flex items-center px-2 shadow-lg">
+<span class="w-2 h-2 rounded-full bg-nuke mr-2"></span>
+<span class="text-[10px] font-mono text-gray-300">GeoScene</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute top-4 right-4 bg-nuke text-black text-xs font-bold px-2 py-1 rounded shadow-sm">BETA</div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded bg-nuke/10 border border-nuke/30 flex items-center justify-center shadow-[0_0_15px_rgba(245,176,38,0.2)]">
+<span class="material-symbols-outlined text-nuke text-2xl">science</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-white tracking-tight">Nuke <span class="text-nuke font-mono text-lg ml-1">v14.0</span></h3>
+<span class="text-xs text-gray-500 font-mono">Q4 2022 • USD 22.05</span>
+</div>
+</div>
+<h4 class="text-xl font-bold text-white mb-3">Nuke 14.0: A New Era for 3D</h4>
+<p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                The beta release of a completely new 3D system. Designed to handle massive USD datasets with native performance and fidelity.
+                            </p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-start gap-3 text-sm text-gray-300">
+<span class="material-symbols-outlined text-nuke text-lg shrink-0">check_small</span>
+<span>Updated 3D System (Beta) with new architecture</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-300">
+<span class="material-symbols-outlined text-nuke text-lg shrink-0">check_small</span>
+<span>USD-native Stage nodes for direct manipulation</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-300">
+<span class="material-symbols-outlined text-nuke text-lg shrink-0">check_small</span>
+<span>Integrated Hydra Viewer for high-fidelity rendering</span>
+</li>
+<li class="flex items-start gap-3 text-sm text-gray-300">
+<span class="material-symbols-outlined text-nuke text-lg shrink-0">check_small</span>
+<span>Expanded USD data support across pipeline</span>
+</li>
+</ul>
+<button class="w-full nuke-btn py-3 rounded text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn">
+<span class="material-symbols-outlined text-lg">settings_ethernet</span>
+                                Deep Dive into Nodes
+                            </button>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-nuke to-transparent opacity-50"></div>
+</div>
+</div>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+<div class="md:w-5/12 order-2 md:order-1 flex justify-end pr-16 relative right-aligned">
+<div class="node-connector"></div>
+<div class="w-full max-w-md card-base card-mari p-8 rounded-xl relative">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-mari/10 border border-mari/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-mari text-xl">brush</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Mari <span class="text-mari font-mono text-sm ml-1 opacity-80">v6.0</span></h3>
+</div>
+</div>
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-2 py-1 rounded bg-[#0f0f0f]">Q1 2023</span>
+</div>
+<h4 class="text-lg font-medium text-gray-200 mb-2">USD Lookdev Context</h4>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">Import full USD stages for in-context texture painting, ensuring assets work perfectly in the final shot.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">Stage Object</span>
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">USD 21.08</span>
+</div>
+</div>
+</div>
+<div class="milestone-dot text-mari"></div>
+<div class="md:w-5/12 order-1 md:order-2 pl-16 flex items-center">
+<span class="year-marker">2023</span>
+</div>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
+<div class="md:w-5/12 order-1 md:order-1 pr-16 flex justify-end items-center">
+</div>
+<div class="milestone-dot text-nuke"></div>
+<div class="md:w-5/12 order-2 md:order-2 flex justify-start pl-16 relative left-aligned">
+<div class="node-connector"></div>
+<div class="w-full max-w-md card-base card-nuke p-8 rounded-xl relative">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-nuke/10 border border-nuke/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-nuke text-xl">science</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Nuke <span class="text-nuke font-mono text-sm ml-1 opacity-80">v14.1</span></h3>
+</div>
+</div>
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-2 py-1 rounded bg-[#0f0f0f]">Q4 2023</span>
+</div>
+<h4 class="text-lg font-medium text-gray-200 mb-2">Native USD Nodes</h4>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">Introduction of native 3D nodes that process USD data directly without translation.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">GeoReference</span>
+<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">USD 22.11</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative py-12 mt-12 px-6 md:px-0">
+<div class="w-full max-w-5xl mx-auto bg-[#121212] border border-nuke/30 rounded-2xl overflow-hidden shadow-2xl relative">
+<div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-nuke to-transparent"></div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-5/12 min-h-[300px] md:h-auto bg-[#151515] relative overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkRHmWib1ALW2tbQSj9z334rhpWciR9vtkD3SjP7SYWygA069N7tWjJx7eTpad63umtnh3YRH-5uqQLe4Z_2powUAA6PmyGveJg-BH0TqENYhnydURsNPM_9Tm-KUSk9OvFkTxtvkyh6pV8Su80Geaqc0-yeVxDV771JyjXucxy_r-R8kk7ZpTyGLpKdAjLZ8eblxuqt03MUptWycow0UTVsqOqXrjs68XC1IkQAfr8X2vdtUUazkdRw9m4nSztawWiDFJgZpoauo')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
+<div class="relative z-10 p-8 text-center">
+<div class="w-20 h-20 mx-auto rounded-full bg-nuke/10 border border-nuke/40 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(245,176,38,0.2)]">
+<span class="material-symbols-outlined text-nuke text-4xl">rocket_launch</span>
+</div>
+<h3 class="text-nuke font-bold tracking-wider text-sm uppercase mb-2">Current Release</h3>
+<p class="text-white text-3xl font-bold font-display">Nuke 15.0</p>
+</div>
+</div>
+<div class="md:w-7/12 p-10 md:p-14 bg-gradient-to-br from-[#121212] to-[#0a0a0a]">
+<h2 class="text-3xl font-bold text-white mb-2">Native 3D System Overhaul</h2>
+<p class="text-gray-500 text-sm mb-6">Released Q4 2023</p>
+<p class="text-gray-300 text-base leading-relaxed mb-8">
+                                The new Nuke 3D system is completely rebuilt on USD. This allows for higher performance in the viewport, exact parity with other USD-compliant tools, and the ability to load massive datasets without conversion overhead.
+                            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 mb-10">
+<div class="flex items-center gap-3 text-gray-400 text-sm">
+<span class="material-symbols-outlined text-nuke text-base">check_circle</span>
+<span>Native USD Geometry &amp; Lights</span>
+</div>
+<div class="flex items-center gap-3 text-gray-400 text-sm">
+<span class="material-symbols-outlined text-nuke text-base">check_circle</span>
+<span>Hydra Storm Viewport</span>
+</div>
+<div class="flex items-center gap-3 text-gray-400 text-sm">
+<span class="material-symbols-outlined text-nuke text-base">check_circle</span>
+<span>Scenegraph Instancing</span>
+</div>
+<div class="flex items-center gap-3 text-gray-400 text-sm">
+<span class="material-symbols-outlined text-nuke text-base">check_circle</span>
+<span>USD 23.05 Core</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="px-6 py-2.5 bg-nuke hover:bg-nuke-glow text-black font-bold rounded text-sm transition-colors shadow-lg shadow-nuke/20">
+                                    Watch Demo
+                                </button>
+<button class="px-6 py-2.5 bg-transparent border border-white/20 text-white font-medium rounded text-sm hover:bg-white/5 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-base">description</span>
+                                    Release Notes
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</div>
+</footer>
+</body></html>

@@ -3,12 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+  <title>Foundry USD Timeline Embed</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0A0A0A;
+      font-family: sans-serif;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .timeline-frame {
+      width: 100%;
+      height: 90vh;
+      border: 1px solid #262626;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <div class="container">
+    <h1>USD Evolution Timeline</h1>
+    <iframe src="USD_timeline/index.html" class="timeline-frame" frameborder="0"></iframe>
+  </div>
 </body>
 </html>

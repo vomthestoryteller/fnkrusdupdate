@@ -1,0 +1,23 @@
+
+[
+    {
+        "product": "mari",
+        "version": "v4.7",
+        "date": "2020-04-20",
+        "quarter": "Q2 2020",
+        "title": "USD Material Export",
+        "description": "Exporting Arnold and Renderman shaders directly to USD, allowing texture artists to see their work in context downstream.",
+        "tags": ["Materials", "USD 20.02"],
+        "icon": "brush"
+    },
+    {
+        "product": "mari",
+        "version": "v6.0",
+        "date": "2023-01-19",
+        "quarter": "Q1 2023",
+        "title": "USD Lookdev Context",
+        "description": "Import full USD stages for in-context texture painting, ensuring assets work perfectly in the final shot.",
+        "tags": ["Stage Object", "USD 21.08"],
+        "icon": "brush"
+    }
+]

@@ -1,0 +1,35 @@
+
+[
+    {
+        "product": "nuke",
+        "version": "v13.0",
+        "date": "2021-03-25",
+        "quarter": "Q1 2021",
+        "title": "Hydra Support",
+        "description": "Ability to render USD scenes via Hydra directly within Nuke's scanline renderer via ReadGeo.",
+        "tags": ["ReadGeo", "USD 20.08"],
+        "icon": "science"
+    },
+    {
+        "product": "nuke",
+        "version": "v14.0",
+        "date": "2022-10-27",
+        "quarter": "Q4 2022",
+        "title": "Nuke 14.0: A New Era for 3D",
+        "description": "The beta release of a completely new 3D system. Designed to handle massive USD datasets with native performance and fidelity.",
+        "tags": ["GeoImport", "GeoMerge", "GeoScene", "USD 22.05"],
+        "icon": "science",
+        "featured": true,
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCva_lfywPNZkdam5p65fLytG1fAbdDlMYo35ybGw_xmu40fruW7i-nTAPFj-csqOWPTNjLLHNQ1dzDgkLvtPvzoG1ZFH7dF16RV6cyu8s9UBQIrcQOFMqGVwBMFGDHepGGRxzm90txEqvo8K8GqvM5bRNIKbO9noSLdP5Dpvqg2DRLK2blfGTtob6suAz9FGMteFdpYe0_vV5U3VVLkWPEZdN-rt21hHkOyZnQy-2Xh1b99gsObsFQTSR5GJR7SXL9Qv7PUr5XcPI"
+    },
+    {
+        "product": "nuke",
+        "version": "v14.1",
+        "date": "2023-10-10",
+        "quarter": "Q4 2023",
+        "title": "Native USD Nodes",
+        "description": "Introduction of native 3D nodes that process USD data directly without translation.",
+        "tags": ["GeoReference", "USD 22.11"],
+        "icon": "science"
+    }
+]

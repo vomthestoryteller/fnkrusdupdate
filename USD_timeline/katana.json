@@ -1,0 +1,33 @@
+
+[
+    {
+        "product": "katana",
+        "version": "v3.5",
+        "date": "2019-10-15",
+        "quarter": "Q4 2019",
+        "title": "Hydra Viewer Beta",
+        "description": "First implementation of USD Hydra based viewport, laying the groundwork for high-fidelity, interactive lighting workflows.",
+        "tags": ["Hydra GL", "USD 19.11"],
+        "icon": "swords"
+    },
+    {
+        "product": "katana",
+        "version": "v4.0",
+        "date": "2020-08-12",
+        "quarter": "Q3 2020",
+        "title": "Native USD Lighting",
+        "description": "Native lighting workflows directly on USD stages without translation overhead, unlocking massive scene scale.",
+        "tags": ["UsdLux", "USD 20.08"],
+        "icon": "swords"
+    },
+    {
+        "product": "katana",
+        "version": "v5.0",
+        "date": "2021-11-30",
+        "quarter": "Q4 2021",
+        "title": "USD Look Development",
+        "description": "Nodal state editing for materials and full support for USD Preview Surface shading.",
+        "tags": ["LookDev", "USD 21.05"],
+        "icon": "swords"
+    }
+]
