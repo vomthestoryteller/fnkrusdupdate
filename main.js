@@ -67,7 +67,7 @@ function renderIcon(icon, product) {
 
 function renderStatusBadge(status) {
     if (!status || status === 'Hidden') return '';
-    const colorClass = status === 'Beta' ? 'bg-nuke text-black' : 'bg-white text-black';
+    const colorClass = status === 'Beta' ? 'bg-nuke text-black' : 'bg-gray-200 text-gray-800';
     return `<div class="absolute top-4 right-4 ${colorClass} text-xs font-bold px-2 py-1 rounded shadow-sm">${status.toUpperCase()}</div>`;
 }
 
@@ -80,7 +80,7 @@ function generateStandardHTML(item, isRightAligned, year) {
         : 'md:w-5/12 order-1 md:order-1 pr-8 flex justify-end items-center';
 
     const linkHtml = item.link ? `
-        <a href="${item.link}" target="_blank" class="block mt-4 text-xs font-medium text-${item.product} hover:text-white transition-colors flex items-center gap-1">
+        <a href="${item.link}" target="_blank" class="block mt-4 text-xs font-medium text-${item.product} hover:text-black transition-colors flex items-center gap-1">
             <span class="material-symbols-outlined text-sm">open_in_new</span>
             Release Notes
         </a>
@@ -98,15 +98,15 @@ function generateStandardHTML(item, isRightAligned, year) {
                                 ${renderIcon(item.icon, item.product)}
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-white tracking-tight">${item.product.charAt(0).toUpperCase() + item.product.slice(1)} <span class="text-${item.product} font-mono text-sm ml-1 opacity-80">${item.version}</span></h3>
+                                <h3 class="text-xl font-bold text-gray-900 tracking-tight">${item.product.charAt(0).toUpperCase() + item.product.slice(1)} <span class="text-${item.product} font-mono text-sm ml-1 opacity-80">${item.version}</span></h3>
                             </div>
                         </div>
-                        <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-2 py-1 rounded bg-[#0f0f0f]">${item.quarter}</span>
+                        <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-200 px-2 py-1 rounded bg-gray-50">${item.quarter}</span>
                     </div>
-                    <h4 class="text-lg font-medium text-gray-200 mb-2">${item.title}</h4>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">${item.description}</p>
+                    <h4 class="text-lg font-medium text-gray-800 mb-2">${item.title}</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4">${item.description}</p>
                     <div class="flex flex-wrap gap-2">
-                        ${item.tags.map(tag => `<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">${tag}</span>`).join('')}
+                        ${item.tags.map(tag => `<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-100 border border-gray-200 text-gray-500 rounded">${tag}</span>`).join('')}
                     </div>
                     ${linkHtml}
                 </div>
@@ -135,8 +135,8 @@ function generateFeaturedHTML(item, isRightAligned, year) {
     `;
 
     const imageHtml = item.content 
-        ? `<a href="${item.content}" target="_blank" class="block w-full h-full cursor-pointer group-image-link"><img alt="${item.title}" class="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:scale-105 transition-transform duration-700" src="${item.image}"/></a>`
-        : `<img alt="${item.title}" class="w-full h-full object-cover opacity-60 mix-blend-screen group-hover:scale-105 transition-transform duration-700" src="${item.image}"/>`;
+        ? `<a href="${item.content}" target="_blank" class="block w-full h-full cursor-pointer group-image-link"><img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${item.image}"/></a>`
+        : `<img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${item.image}"/>`;
 
     return `
         <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
@@ -144,8 +144,8 @@ function generateFeaturedHTML(item, isRightAligned, year) {
             <div class="milestone-dot text-nuke" style="box-shadow: 0 0 20px rgba(245,176,38,0.5); border-color: #f5b026;"></div>
             <div class="md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-4 md:pr-0 md:pl-8 relative left-aligned">
                 <div class="node-connector bg-nuke" style="width: 64px;"></div>
-                <div class="w-full max-w-2xl card-base bg-[#0f0f0f] border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_0_40px_-10px_rgba(245,176,38,0.1)] card-nuke">
-                    <div class="h-64 relative bg-[#1a1a1a] border-b border-white/5 overflow-hidden">
+                <div class="w-full max-w-2xl card-base bg-white border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_4px_20px_-5px_rgba(245,176,38,0.1)] card-nuke">
+                    <div class="h-64 relative bg-gray-100 border-b border-black/5 overflow-hidden">
                         ${imageHtml}
                         ${renderStatusBadge(item.status)}
                     </div>
@@ -155,12 +155,12 @@ function generateFeaturedHTML(item, isRightAligned, year) {
                                 ${renderIcon(item.icon, item.product)}
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold text-white tracking-tight">Nuke <span class="text-nuke font-mono text-lg ml-1">${item.version}</span></h3>
+                                <h3 class="text-2xl font-bold text-gray-900 tracking-tight">Nuke <span class="text-nuke font-mono text-lg ml-1">${item.version}</span></h3>
                                 <span class="text-xs text-gray-500 font-mono">${item.quarter} • USD 22.05</span>
                             </div>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-3">${item.title}</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">${item.description}</p>
+                        <h4 class="text-xl font-bold text-gray-900 mb-3">${item.title}</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">${item.description}</p>
                         ${linkHtml}
                     </div>
                 </div>
