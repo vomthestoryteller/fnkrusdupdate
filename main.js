@@ -80,15 +80,14 @@ function getYouTubeId(url) {
 
 window.loadVideo = function(container, videoId) {
     container.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="absolute inset-0 w-full h-full"></iframe>`;
-    // Remove hover effects or cursor pointer if needed, though replacing innerHTML mostly handles it.
     container.removeAttribute('onclick');
     container.classList.remove('cursor-pointer');
 };
 
 function generateStandardHTML(item, isRightAligned, year) {
     const cardSideClasses = isRightAligned 
-        ? 'md:w-5/12 order-2 md:order-1 flex justify-center md:justify-end px-4 md:pl-0 md:pr-8 relative right-aligned' 
-        : 'md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-4 md:pr-0 md:pl-8 relative left-aligned';
+        ? 'md:w-5/12 order-2 md:order-1 flex justify-center md:justify-end px-5 md:pl-5 md:pr-4 relative right-aligned' 
+        : 'md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-5 md:pr-5 md:pl-4 relative left-aligned';
     const yearSideClasses = isRightAligned
         ? 'md:w-5/12 order-1 md:order-2 pl-8 flex items-center'
         : 'md:w-5/12 order-1 md:order-1 pr-8 flex justify-end items-center';
@@ -151,8 +150,8 @@ function getProductHexColor(product) {
 
 function generateFeaturedHTML(item, isRightAligned, year) {
     const cardSideClasses = isRightAligned 
-        ? 'md:w-5/12 order-2 md:order-1 flex justify-center md:justify-end px-4 md:pl-0 md:pr-8 relative right-aligned' 
-        : 'md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-4 md:pr-0 md:pl-8 relative left-aligned';
+        ? 'md:w-5/12 order-2 md:order-1 flex justify-center md:justify-end px-5 md:pl-5 md:pr-4 relative right-aligned' 
+        : 'md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-5 md:pr-5 md:pl-4 relative left-aligned';
     
     const yearSideClasses = isRightAligned
         ? 'md:w-5/12 order-1 md:order-2 pl-8 flex items-center'
