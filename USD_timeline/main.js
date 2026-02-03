@@ -66,6 +66,13 @@ function generateStandardHTML(item, isRightAligned, year) {
         ? 'md:w-5/12 order-1 md:order-2 pl-16 flex items-center'
         : 'md:w-5/12 order-1 md:order-1 pr-16 flex justify-end items-center';
 
+    const linkHtml = item.link ? `
+        <a href="${item.link}" target="_blank" class="block mt-4 text-xs font-medium text-${item.product} hover:text-white transition-colors flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">open_in_new</span>
+            Release Notes
+        </a>
+    ` : '';
+
     return `
         <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
             ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker">${year}</span></div>` : ''}
@@ -88,6 +95,7 @@ function generateStandardHTML(item, isRightAligned, year) {
                     <div class="flex gap-2">
                         ${item.tags.map(tag => `<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-900 border border-gray-800 text-gray-400 rounded">${tag}</span>`).join('')}
                     </div>
+                    ${linkHtml}
                 </div>
             </div>
             <div class="milestone-dot text-${item.product}"></div>
@@ -100,6 +108,18 @@ function generateFeaturedHTML(item, isRightAligned, year) {
     const yearSideClasses = isRightAligned
         ? 'md:w-5/12 order-1 md:order-2 pl-16 flex items-center'
         : 'md:w-5/12 order-1 md:order-1 pr-16 flex justify-end items-center';
+
+    const linkHtml = item.link ? `
+         <a href="${item.link}" target="_blank" class="w-full nuke-btn py-3 rounded text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn mt-4 hover:brightness-110 transition-all">
+            <span class="material-symbols-outlined text-lg">open_in_new</span>
+            Release Notes
+        </a>
+    ` : `
+        <button class="w-full nuke-btn py-3 rounded text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn mt-4">
+            <span class="material-symbols-outlined text-lg">settings_ethernet</span>
+            Deep Dive into Nodes
+        </button>
+    `;
 
     return `
         <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
@@ -148,10 +168,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
                         </div>
                         <h4 class="text-xl font-bold text-white mb-3">${item.title}</h4>
                         <p class="text-gray-400 text-sm leading-relaxed mb-6">${item.description}</p>
-                        <button class="w-full nuke-btn py-3 rounded text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn">
-                            <span class="material-symbols-outlined text-lg">settings_ethernet</span>
-                            Deep Dive into Nodes
-                        </button>
+                        ${linkHtml}
                     </div>
                 </div>
             </div>
