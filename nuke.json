@@ -9,7 +9,10 @@
         "description": "3D 뷰어에 Hydra 지원을 추가하며, Camera, Light, Axis 데이터를 USD로 불러올 수 있습니다.",
         "tags": ["USD 20.08", "ReadGeo", "Camera", "Light", "Axis"],
         "icon": "images/ICON_NUKE_yellow.svg",
-        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.0.html"
+        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.0.html",
+        "featured": true,
+        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk"        
     },
     {
         "product": "nuke",
@@ -20,7 +23,11 @@
         "description": "3D 핸들을 전면 재설계하여 사용 편의성을 높이고 기능을 확장했습니다.",
         "tags": ["ReadGeo", "USD 20.08"],
         "icon": "images/ICON_NUKE_yellow.svg",
-        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.1.html"
+        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.1.html",
+        "featured": true,
+        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
+        "status": "Beta"        
     },
     {
         "product": "nuke",
@@ -31,15 +38,19 @@
         "description": "더욱 개선된 3D UX로 지오메트리를 더 빠르게 조정하세요.",
         "tags": ["ReadGeo", "USD 20.08"],
         "icon": "images/ICON_NUKE_yellow.svg",
-        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.2.html"
+        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.2.html",
+        "featured": true,
+        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
+        "status": "Beta"
     },
     {
         "product": "nuke",
         "version": "v14.0",
-        "date": "2022-10-27",
+        "date": "2022-12-06",
         "quarter": "Q4 2022",
         "title": "Nuke 14.0: USD기반의 새로운 3D 시스템 도입",
-        "description": "The beta release of a completely new 3D system. Designed to handle massive USD datasets with native performance and fidelity.",
+        "description": "Nuke의 3D 시스템을 전면 개편하여 새로운 USD 기반 3D 시스템을 도입했습니다. 대규모의 3D 씬도 효율적으로 작업할 수 있습니다.",
         "tags": ["GeoImport", "GeoMerge", "GeoScene", "USD 22.05"],
         "icon": "images/ICON_NUKE_yellow.svg",
         "featured": true,
@@ -49,12 +60,44 @@
     },
     {
         "product": "nuke",
-        "version": "v14.1",
-        "date": "2023-10-10",
+        "version": "v15.0",
+        "date": "2023-10-12",
         "quarter": "Q4 2023",
-        "title": "Native USD Nodes",
+        "title": "USD기반의 새로운 3D 시스템 도입 2단계",
         "description": "Introduction of native 3D nodes that process USD data directly without translation.",
-        "tags": ["GeoReference", "USD 22.11"],
-        "icon": "images/ICON_NUKE_yellow.svg"
+        "tags": ["USD 23.05", "GeoMerge", "ScanlineRender2", "3D Selection", "SceneGraph Popup"],
+        "icon": "images/ICON_NUKE_yellow.svg",
+        "featured": true,
+        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
+        "status": "Beta"        
+    },
+    {
+        "product": "nuke",
+        "version": "v15.1",
+        "date": "2024-06-13",
+        "quarter": "Q2 2023",
+        "title": "USD기반의 새로운 3D 시스템 도입 3단계",
+        "description": "향상된 3D 스테이지 빌딩 성능과 타임 리매핑",
+        "tags": ["USD 22.11", "GeoUVProject", "FrameHole", "TimeOffset"],
+        "icon": "images/ICON_NUKE_yellow.svg",
+        "featured": true,
+        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
+        "status": "Beta"
+    },
+    {
+        "product": "nuke",
+        "version": "v16.0",
+        "date": "2025-02-27",
+        "quarter": "Q1 2025",
+        "title": "Nuke 14.0: USD기반의 새로운 3D 시스템 도입",
+        "description": "The beta release of a completely new 3D system. Designed to handle massive USD datasets with native performance and fidelity.",
+        "tags": ["GeoImport", "GeoMerge", "GeoScene", "USD 22.05"],
+        "icon": "images/ICON_NUKE_yellow.svg",
+        "featured": true,
+        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
+        "status": "Beta"
     }
 ]

@@ -8,7 +8,11 @@
         "title": "USD Material Export",
         "description": "Exporting Arnold and Renderman shaders directly to USD, allowing texture artists to see their work in context downstream.",
         "tags": ["Materials", "USD 20.02"],
-        "icon": "images/ICON_MARI_yellow.svg"
+        "icon": "images/ICON_MARI_yellow.svg",
+        "link": "",
+        "featured": true,
+        "image": "",
+        "content": ""
     },
     {
         "product": "mari",
@@ -18,6 +22,10 @@
         "title": "USD Lookdev Context",
         "description": "Import full USD stages for in-context texture painting, ensuring assets work perfectly in the final shot.",
         "tags": ["Stage Object", "USD 21.08"],
-        "icon": "images/ICON_MARI_yellow.svg"
+        "icon": "images/ICON_MARI_yellow.svg",
+        "link": "",
+        "featured": true,
+        "image": "",
+        "content": ""
     }
 ]

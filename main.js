@@ -65,9 +65,9 @@ function renderIcon(icon, product) {
     return `<span class="material-symbols-outlined text-${product} text-xl">${icon}</span>`;
 }
 
-function renderStatusBadge(status) {
+function renderStatusBadge(status, product) {
     if (!status || status === 'Hidden') return '';
-    const colorClass = status === 'Beta' ? 'bg-nuke text-black' : 'bg-gray-200 text-gray-800';
+    const colorClass = status === 'Beta' ? `bg-${product} text-black` : 'bg-gray-200 text-gray-800';
     return `<div class="absolute top-4 right-4 ${colorClass} text-xs font-bold px-2 py-1 rounded shadow-sm">${status.toUpperCase()}</div>`;
 }
 
@@ -98,7 +98,7 @@ function generateStandardHTML(item, isRightAligned, year) {
                                 ${renderIcon(item.icon, item.product)}
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-gray-900 tracking-tight">${item.product.charAt(0).toUpperCase() + item.product.slice(1)} <span class="text-${item.product} font-mono text-sm ml-1 opacity-80">${item.version}</span></h3>
+                                <h3 class="text-xl font-bold text-gray-900 tracking-tight">${item.product.charAt(0).toUpperCase() + item.product.slice(1)} <span class="text-version-highlight font-mono text-sm ml-1 opacity-80">${item.version}</span></h3>
                             </div>
                         </div>
                         <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-200 px-2 py-1 rounded bg-gray-50">${item.quarter}</span>
@@ -117,10 +117,34 @@ function generateStandardHTML(item, isRightAligned, year) {
     `;
 }
 
+function getProductColor(product) {
+    const colors = {
+        'nuke': '245, 176, 38',
+        'katana': '227, 227, 0',
+        'mari': '196, 60, 60'
+    };
+    return colors[product] || '245, 176, 38';
+}
+
+function getProductHexColor(product) {
+     const colors = {
+        'nuke': '#f5b026',
+        'katana': '#e3e300',
+        'mari': '#c43c3c'
+    };
+    return colors[product] || '#f5b026';
+}
+
 function generateFeaturedHTML(item, isRightAligned, year) {
     const yearSideClasses = isRightAligned
         ? 'md:w-5/12 order-1 md:order-2 pl-8 flex items-center'
         : 'md:w-5/12 order-1 md:order-1 pr-8 flex justify-end items-center';
+
+    const product = item.product;
+    const productName = product.charAt(0).toUpperCase() + product.slice(1);
+    const rgb = getProductColor(product);
+    const hex = getProductHexColor(product);
+    const usdTag = item.tags.find(t => t.startsWith('USD')) || '';
 
     const linkHtml = item.link ? `
          <a href="${item.link}" target="_blank" class="w-full nuke-btn py-3 rounded text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn mt-4 hover:brightness-110 transition-all">
@@ -134,29 +158,33 @@ function generateFeaturedHTML(item, isRightAligned, year) {
         </button>
     `;
 
+    // Handle image if it exists, otherwise placeholder or skip
+    // The previous code had item.content wrapping the image.
+    // If image is empty string in JSON, we might want to handle it, but for now assuming updated JSONs will be populated or handled gracefully.
+    const imageSrc = item.image || 'https://via.placeholder.com/800x400';
     const imageHtml = item.content 
-        ? `<a href="${item.content}" target="_blank" class="block w-full h-full cursor-pointer group-image-link"><img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${item.image}"/></a>`
-        : `<img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${item.image}"/>`;
+        ? `<a href="${item.content}" target="_blank" class="block w-full h-full cursor-pointer group-image-link"><img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/></a>`
+        : `<img alt="${item.title}" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" src="${imageSrc}"/>`;
 
     return `
         <div class="relative flex flex-col md:flex-row items-center justify-between py-24 group transition-opacity duration-500">
-            ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker text-nuke opacity-50">${year}</span></div>` : ''}
-            <div class="milestone-dot text-nuke" style="box-shadow: 0 0 20px rgba(245,176,38,0.5); border-color: #f5b026;"></div>
+            ${!isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker text-${product} opacity-50">${year}</span></div>` : ''}
+            <div class="milestone-dot text-${product}" style="box-shadow: 0 0 20px rgba(${rgb},0.5); border-color: ${hex};"></div>
             <div class="md:w-5/12 order-2 md:order-2 flex justify-center md:justify-start px-4 md:pr-0 md:pl-8 relative left-aligned">
-                <div class="node-connector bg-nuke" style="width: 64px;"></div>
-                <div class="w-full max-w-2xl card-base bg-white border-nuke/30 rounded-xl relative overflow-hidden group-hover:border-nuke/60 transition-colors shadow-[0_4px_20px_-5px_rgba(245,176,38,0.1)] card-nuke">
+                <div class="node-connector bg-${product}" style="width: 64px;"></div>
+                <div class="w-full max-w-2xl card-base bg-white border-${product}/30 rounded-xl relative overflow-hidden group-hover:border-${product}/60 transition-colors shadow-[0_4px_20px_-5px_rgba(${rgb},0.1)] card-${product}">
                     <div class="h-64 relative bg-gray-100 border-b border-black/5 overflow-hidden">
                         ${imageHtml}
-                        ${renderStatusBadge(item.status)}
+                        ${renderStatusBadge(item.status, product)}
                     </div>
                     <div class="p-8">
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-12 h-12 rounded bg-nuke/10 border border-nuke/30 flex items-center justify-center shadow-[0_0_15px_rgba(245,176,38,0.2)]">
-                                ${renderIcon(item.icon, item.product)}
+                            <div class="w-12 h-12 rounded bg-${product}/10 border border-${product}/30 flex items-center justify-center shadow-[0_0_15px_rgba(${rgb},0.2)]">
+                                ${renderIcon(item.icon, product)}
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold text-gray-900 tracking-tight">Nuke <span class="text-nuke font-mono text-lg ml-1">${item.version}</span></h3>
-                                <span class="text-xs text-gray-500 font-mono">${item.quarter} • USD 22.05</span>
+                                <h3 class="text-2xl font-bold text-gray-900 tracking-tight">${productName} <span class="text-version-highlight font-mono text-lg ml-1">${item.version}</span></h3>
+                                <span class="text-xs text-gray-500 font-mono">${item.quarter} • ${usdTag}</span>
                             </div>
                         </div>
                         <h4 class="text-xl font-bold text-gray-900 mb-3">${item.title}</h4>
@@ -165,7 +193,7 @@ function generateFeaturedHTML(item, isRightAligned, year) {
                     </div>
                 </div>
             </div>
-            ${isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker text-nuke opacity-50">${year}</span></div>` : ''}
+            ${isRightAligned ? `<div class="${yearSideClasses}"><span class="year-marker text-${product} opacity-50">${year}</span></div>` : ''}
         </div>
     `;
 }
