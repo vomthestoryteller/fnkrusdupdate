@@ -5,24 +5,46 @@
         "version": "v13.0",
         "date": "2021-03-25",
         "quarter": "Q1 2021",
-        "title": "Hydra Support",
-        "description": "Ability to render USD scenes via Hydra directly within Nuke's scanline renderer via ReadGeo.",
-        "tags": ["ReadGeo", "USD 20.08"],
+        "title": "USD 지원",
+        "description": "3D 뷰어에 Hydra 지원을 추가하며, Camera, Light, Axis 데이터를 USD로 불러올 수 있습니다.",
+        "tags": ["USD 20.08", "ReadGeo", "Camera", "Light", "Axis"],
         "icon": "images/ICON_NUKE_yellow.svg",
         "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.0.html"
+    },
+    {
+        "product": "nuke",
+        "version": "v13.1",
+        "date": "2021-11-23",
+        "quarter": "Q3 2021",
+        "title": "3D UX 개선",
+        "description": "3D 핸들을 전면 재설계하여 사용 편의성을 높이고 기능을 확장했습니다.",
+        "tags": ["ReadGeo", "USD 20.08"],
+        "icon": "images/ICON_NUKE_yellow.svg",
+        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.1.html"
+    },
+    {
+        "product": "nuke",
+        "version": "v13.2",
+        "date": "2022-04-14",
+        "quarter": "Q1 2022",
+        "title": "Hydra Support",
+        "description": "더욱 개선된 3D UX로 지오메트리를 더 빠르게 조정하세요.",
+        "tags": ["ReadGeo", "USD 20.08"],
+        "icon": "images/ICON_NUKE_yellow.svg",
+        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.2.html"
     },
     {
         "product": "nuke",
         "version": "v14.0",
         "date": "2022-10-27",
         "quarter": "Q4 2022",
-        "title": "Nuke 14.0: A New Era for 3D",
+        "title": "Nuke 14.0: USD기반의 새로운 3D 시스템 도입",
         "description": "The beta release of a completely new 3D system. Designed to handle massive USD datasets with native performance and fidelity.",
         "tags": ["GeoImport", "GeoMerge", "GeoScene", "USD 22.05"],
         "icon": "images/ICON_NUKE_yellow.svg",
         "featured": true,
-        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCva_lfywPNZkdam5p65fLytG1fAbdDlMYo35ybGw_xmu40fruW7i-nTAPFj-csqOWPTNjLLHNQ1dzDgkLvtPvzoG1ZFH7dF16RV6cyu8s9UBQIrcQOFMqGVwBMFGDHepGGRxzm90txEqvo8K8GqvM5bRNIKbO9noSLdP5Dpvqg2DRLK2blfGTtob6suAz9FGMteFdpYe0_vV5U3VVLkWPEZdN-rt21hHkOyZnQy-2Xh1b99gsObsFQTSR5GJR7SXL9Qv7PUr5XcPI",
-        "content": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk"
     },
     {
         "product": "nuke",
