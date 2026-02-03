@@ -11,8 +11,8 @@
         "icon": "images/ICON_NUKE_yellow.svg",
         "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_13.0.html",
         "featured": true,
-        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
-        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk"        
+        "image": "https://img.youtube.com/vi/fx19tSzHWWE/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=fx19tSzHWWE"        
     },
     {
         "product": "nuke",
@@ -67,6 +67,7 @@
         "description": "Introduction of native 3D nodes that process USD data directly without translation.",
         "tags": ["USD 23.05", "GeoMerge", "ScanlineRender2", "3D Selection", "SceneGraph Popup"],
         "icon": "images/ICON_NUKE_yellow.svg",
+        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_15.0.html",
         "featured": true,
         "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
@@ -76,14 +77,15 @@
         "product": "nuke",
         "version": "v15.1",
         "date": "2024-06-13",
-        "quarter": "Q2 2023",
+        "quarter": "Q2 2024",
         "title": "USD기반의 새로운 3D 시스템 도입 3단계",
         "description": "향상된 3D 스테이지 빌딩 성능과 타임 리매핑",
-        "tags": ["USD 22.11", "GeoUVProject", "FrameHole", "TimeOffset"],
+        "tags": ["USD 23.11", "GeoUVProject", "FrameHole", "TimeOffset"],
         "icon": "images/ICON_NUKE_yellow.svg",
+        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_15.1.html",
         "featured": true,
-        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
-        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
+        "image": "https://img.youtube.com/vi/GiPVGFZmTMo/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=GiPVGFZmTMo",
         "status": "Beta"
     },
     {
@@ -91,13 +93,14 @@
         "version": "v16.0",
         "date": "2025-02-27",
         "quarter": "Q1 2025",
-        "title": "Nuke 14.0: USD기반의 새로운 3D 시스템 도입",
-        "description": "The beta release of a completely new 3D system. Designed to handle massive USD datasets with native performance and fidelity.",
-        "tags": ["GeoImport", "GeoMerge", "GeoScene", "USD 22.05"],
+        "title": "USD기반의 새로운 3D 시스템 도입 4단계",
+        "description": "새로운 3D 시스템의 개발이 지속됨에 따라, 당사는 사용자 피드백을 반영하여 여러분이 가장 자주 사용하는 노드들을 업데이트하는 데 주력했습니다. 아울러 이와 관련된 새로운 기능과 워크플로우도 함께 선보입니다.",
+        "tags": ["USD 24.05", "GeoXformPrim", "GeoConstrain", "ScanlineRender2"],
         "icon": "images/ICON_NUKE_yellow.svg",
+        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_16.0.html",
         "featured": true,
-        "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
-        "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
+        "image": "https://img.youtube.com/vi/YTUm3Ebxo-c/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=YTUm3Ebxo-c",
         "status": "Beta"
     }
 ]
