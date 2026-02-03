@@ -101,6 +101,10 @@
             line-height: 1;
             user-select: none;
             transition: color 0.5s ease;
+            position: relative;
+            z-index: 2; /* Ensure it is above the wire */
+            background-color: #FFFFFF; /* Add background to hide the wire underneath */
+            padding: 0 10px; /* Add some padding so the wire doesn't touch the text */
         }
         .group:hover .year-marker {
             color: #E5E7EB;
