@@ -148,7 +148,6 @@ function generateFeaturedHTML(item, isRightAligned, year) {
     const productName = product.charAt(0).toUpperCase() + product.slice(1);
     const rgb = getProductColor(product);
     const hex = getProductHexColor(product);
-    const usdTag = item.tags.find(t => t.startsWith('USD')) || '';
 
     const linkHtml = item.link ? `
          <a href="${item.link}" target="_blank" class="w-full nuke-btn py-3 rounded text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn mt-4 hover:brightness-110 transition-all">
@@ -182,17 +181,22 @@ function generateFeaturedHTML(item, isRightAligned, year) {
                         ${renderStatusBadge(item.status, product)}
                     </div>
                     <div class="p-8">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-12 h-12 rounded bg-${product}/10 border border-${product}/30 flex items-center justify-center shadow-[0_0_15px_rgba(${rgb},0.2)]">
-                                ${renderIcon(item.icon, product)}
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded bg-${product}/10 border border-${product}/30 flex items-center justify-center shadow-[0_0_15px_rgba(${rgb},0.2)]">
+                                    ${renderIcon(item.icon, product)}
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 tracking-tight">${productName} <span class="text-version-highlight font-mono text-lg ml-1">${item.version}</span></h3>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-900 tracking-tight">${productName} <span class="text-version-highlight font-mono text-lg ml-1">${item.version}</span></h3>
-                                <span class="text-xs text-gray-500 font-mono">${item.quarter} • ${usdTag}</span>
-                            </div>
+                            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-200 px-2 py-1 rounded bg-gray-50">${item.quarter}</span>
                         </div>
                         <h4 class="text-xl font-bold text-gray-900 mb-3">${item.title}</h4>
                         <p class="text-gray-600 text-sm leading-relaxed mb-6">${item.description}</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${item.tags.map(tag => `<span class="px-2 py-1 text-[10px] uppercase font-mono bg-gray-100 border border-gray-200 text-gray-500 rounded">${tag}</span>`).join('')}
+                        </div>
                         ${linkHtml}
                     </div>
                 </div>
