@@ -3,8 +3,10 @@ let timelineData = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     const files = ['nuke.json', 'katana.json', 'mari.json'];
+    // 캐시 방지를 위해 현재 시간을 쿼리 스트링으로 추가
+    const timestamp = new Date().getTime();
     
-    Promise.all(files.map(file => fetch(file).then(res => res.json())))
+    Promise.all(files.map(file => fetch(`${file}?t=${timestamp}`).then(res => res.json())))
         .then(results => {
             // Flatten the array of arrays into a single array
             timelineData = results.flat().sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -98,6 +100,10 @@ function generateStandardHTML(item, isRightAligned, year) {
             Release Notes
         </a>
     ` : '';
+    
+    // Check for supported property
+    const isUnsupported = item.supported === false || item.supported === 'false';
+    const supportedHtml = isUnsupported ? '<span class="text-[8px] font-bold text-gray-500 uppercase tracking-widest border border-gray-200 px-1.5 py-0.0 rounded bg-gray-50 ml-2">Unsupported</span>' : '';
 
     return `
         <div class="relative flex flex-col md:flex-row items-center justify-between py-12 gap-6 md:gap-0 group transition-opacity duration-500">
@@ -111,10 +117,14 @@ function generateStandardHTML(item, isRightAligned, year) {
                                 ${renderIcon(item.icon, item.product)}
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-gray-900 tracking-tight">${item.product.charAt(0).toUpperCase() + item.product.slice(1)} <span class="text-version-highlight font-mono text-sm ml-1 opacity-80">${item.version}</span></h3>
+                                <h3 class="text-xl font-bold text-gray-900 tracking-tight flex items-center flex-wrap gap-2">
+                                    ${item.product.charAt(0).toUpperCase() + item.product.slice(1)} 
+                                    <span class="text-version-highlight font-mono text-sm opacity-80">${item.version}</span>
+                                    ${supportedHtml}
+                                </h3>
                             </div>
                         </div>
-                        <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-200 px-2 py-1 rounded bg-gray-50">${item.quarter}</span>
+                        <span class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">${item.quarter}</span>
                     </div>
                     <h4 class="text-lg font-medium text-gray-800 mb-2">${item.title}</h4>
                     <p class="text-gray-600 text-sm leading-relaxed mb-4">${item.description}</p>
@@ -161,6 +171,10 @@ function generateFeaturedHTML(item, isRightAligned, year) {
     const productName = product.charAt(0).toUpperCase() + product.slice(1);
     const rgb = getProductColor(product);
     const hex = getProductHexColor(product);
+    
+    // Check for supported property
+    const isUnsupported = item.supported === false || item.supported === 'false';
+    const supportedHtml = isUnsupported ? '<span class="text-[8px] font-bold text-gray-500 uppercase tracking-widest border border-gray-200 px-1.5 py-0.0 rounded bg-gray-50 ml-2">Unsupported</span>' : '';
 
     const linkHtml = item.link ? `
          <a href="${item.link}" target="_blank" class="w-full nuke-btn py-3 rounded text-xs uppercase tracking-wider flex items-center justify-center gap-2 group/btn mt-4 hover:brightness-110 transition-all">
@@ -220,10 +234,14 @@ function generateFeaturedHTML(item, isRightAligned, year) {
                                     ${renderIcon(item.icon, product)}
                                 </div>
                                 <div>
-                                    <h3 class="text-2xl font-bold text-gray-900 tracking-tight">${productName} <span class="text-version-highlight font-mono text-lg ml-1">${item.version}</span></h3>
+                                    <h3 class="text-2xl font-bold text-gray-900 tracking-tight flex items-center flex-wrap gap-2">
+                                        ${productName} 
+                                        <span class="text-version-highlight font-mono text-lg ml-1">${item.version}</span>
+                                        ${supportedHtml}
+                                    </h3>
                                 </div>
                             </div>
-                            <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest border border-gray-200 px-2 py-1 rounded bg-gray-50">${item.quarter}</span>
+                            <span class="text-[14px] font-bold text-gray-400 uppercase tracking-widest">${item.quarter}</span>
                         </div>
                         <h4 class="text-xl font-bold text-gray-900 mb-3">${item.title}</h4>
                         <p class="text-gray-600 text-sm leading-relaxed mb-6">${item.description}</p>

@@ -1,4 +1,3 @@
-
 [
     {
         "product": "mari",
@@ -7,12 +6,18 @@
         "quarter": "Q4 2021",
         "title": "Built-in USD Plug-ins",
         "description": "Exporting Arnold and Renderman shaders directly to USD, allowing texture artists to see their work in context downstream.",
-        "tags": ["USD 20.02","USD Mesh Import", "USD Preview Surface", "USD Look Export"],
+        "tags": [
+            "USD 20.02",
+            "USD Mesh Import",
+            "USD Preview Surface",
+            "USD Look Export"
+        ],
         "icon": "images/ICON_MARI_yellow.svg",
         "link": "https://learn.foundry.com/mari/Content/release_notes/Mari_5_series.html",
         "featured": true,
         "image": "https://img.youtube.com/vi/hER4IMvrMsw/hqdefault.jpg",
-        "content": "https://www.youtube.com/watch?v=hER4IMvrMsw"
+        "content": "https://www.youtube.com/watch?v=hER4IMvrMsw",
+        "supported": true
     },
     {
         "product": "mari",
@@ -21,12 +26,17 @@
         "quarter": "Q4 2022",
         "title": "USD Lookdev Context",
         "description": "Import full USD stages for in-context texture painting, ensuring assets work perfectly in the final shot.",
-        "tags": ["USD 22.05", "USD Look Export", "USD Material Assign"],
+        "tags": [
+            "USD 22.05",
+            "USD Look Export",
+            "USD Material Assign"
+        ],
         "icon": "images/ICON_MARI_yellow.svg",
         "link": "https://learn.foundry.com/mari/Content/release_notes/Mari_6_series.html",
         "featured": true,
         "image": "https://img.youtube.com/vi/Rr4oYYrnT7g/maxresdefault.jpg",
-        "content": "https://www.youtube.com/watch?v=Rr4oYYrnT7g"
+        "content": "https://www.youtube.com/watch?v=Rr4oYYrnT7g",
+        "supported": false
     },
     {
         "product": "mari",
@@ -35,12 +45,16 @@
         "quarter": "Q4 2023",
         "title": "USD Importer 2.0",
         "description": "기존 USD 임포터를 전면 개편하여 USD 기능이 더욱 강화되었습니다. 이를 통해 파이프라인의 작업 효율을 저해하던 요소들을 제거하고 사용 편의성을 높여, 아티스트가 USD 파이프라인 내에서 에셋을 쉽고 원활하게 다룰 수 있도록 개선했습니다.",
-        "tags": ["USD 23.05", "USD Importer 2.0"],
+        "tags": [
+            "USD 23.05",
+            "USD Importer 2.0"
+        ],
         "icon": "images/ICON_MARI_yellow.svg",
         "link": "https://learn.foundry.com/mari/7.5/Content/release_notes/Mari_7_series.html",
         "featured": true,
         "image": "https://img.youtube.com/vi/3sNWhsHV4Bw/maxresdefault.jpg",
-        "content": "https://www.youtube.com/watch?v=3sNWhsHV4Bw"
+        "content": "https://www.youtube.com/watch?v=3sNWhsHV4Bw",
+        "supported": false
     },
     {
         "product": "mari",
@@ -49,11 +63,15 @@
         "quarter": "Q4 2025",
         "title": "USD Import Fix",
         "description": "Import full USD stages for in-context texture painting, ensuring assets work perfectly in the final shot.",
-        "tags": ["USD 23.05", "Bug Fix"],
+        "tags": [
+            "USD 23.05",
+            "Bug Fix"
+        ],
         "icon": "images/ICON_MARI_yellow.svg",
         "link": "https://learn.foundry.com/mari/7.5/Content/release_notes/Mari_7_series.html",
         "featured": false,
         "image": "",
-        "content": ""
+        "content": "",
+        "supported": true
     }
 ]
