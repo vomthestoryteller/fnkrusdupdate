@@ -19,7 +19,8 @@
                         "primary": "#2b8cee",
                         "nuke": "#fcb434",
                         "katana": "#fcb434", 
-                        "mari": "#fcb434"
+                        "mari": "#fcb434",
+                        "brand-mari": "#fcb434"
                     },
                     fontFamily: {
                         "sans": ["Avenir", "Inter", "sans-serif"],
@@ -207,7 +208,7 @@
     </style>
 
 </head>
-<body class="font-sans antialiased selection:bg-mari selection:text-black overflow-x-hidden" onload="filterTimeline('mari')">
+<body class="font-sans antialiased selection:bg-mari selection:text-black overflow-x-hidden">
 
 <header class="relative min-h-[30vh] flex items-center justify-center overflow-hidden border-b border-border-dim">
     <div class="relative z-20 container mx-auto px-6 text-center max-w-4xl">
@@ -227,7 +228,7 @@
             <button class="filter-btn filter-btn-katana px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2" onclick="window.location.href = 'katana.html'">
                 <img src="images/ICON_KATANA_yellow.svg" alt="Katana" class="w-4 h-4"> Katana
             </button>
-            <button class="filter-btn filter-btn-mari px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2 active" onclick="filterTimeline('mari')">
+            <button class="filter-btn filter-btn-mari px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2 active">
                 <img src="images/ICON_MARI_yellow.svg" alt="Mari" class="w-4 h-4"> Mari
             </button>
         </div>
@@ -241,8 +242,6 @@
         <!-- Timeline content will be injected here by main.js -->
     </div>
 </main>
-
-<script src="main.js"></script>
 
  <!-- Feature Section START -->
  <div class="relative px-4 md:px-0 mt-12 pb-24">
@@ -301,5 +300,7 @@
  </div>
  <!-- Feature Section END -->
 
+<script src="timeline-utils.js"></script>
+<script src="mari.js"></script>
 
 </body></html>

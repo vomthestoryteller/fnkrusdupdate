@@ -19,7 +19,8 @@
                         "primary": "#2b8cee",
                         "nuke": "#fcb434",
                         "katana": "#fcb434", 
-                        "mari": "#fcb434"
+                        "mari": "#fcb434",
+                        "brand-katana": "#fcb434"
                     },
                     fontFamily: {
                         "sans": ["Avenir", "Inter", "sans-serif"],
@@ -207,7 +208,7 @@
     </style>
 
 </head>
-<body class="font-sans antialiased selection:bg-katana selection:text-black overflow-x-hidden" onload="filterTimeline('katana')">
+<body class="font-sans antialiased selection:bg-katana selection:text-black overflow-x-hidden">
 
 <header class="relative min-h-[30vh] flex items-center justify-center overflow-hidden border-b border-border-dim">
     <div class="relative z-20 container mx-auto px-6 text-center max-w-4xl">
@@ -224,7 +225,7 @@
             <button class="filter-btn filter-btn-nuke px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2" onclick="window.location.href = 'nuke.html'">
                 <img src="images/ICON_NUKE_yellow.svg" alt="Nuke" class="w-4 h-4"> Nuke
             </button>
-            <button class="filter-btn filter-btn-katana px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2 active" onclick="filterTimeline('katana')">
+            <button class="filter-btn filter-btn-katana px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2 active">
                 <img src="images/ICON_KATANA_yellow.svg" alt="Katana" class="w-4 h-4"> Katana
             </button>
             <button class="filter-btn filter-btn-mari px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2" onclick="window.location.href = 'mari.html'">
@@ -242,8 +243,6 @@
     </div>
 </main>
 
-<script src="main.js"></script>
-
  <!-- Feature Section START -->
  <div class="relative px-4 md:px-0 mt-12 pb-24">
     <div class="w-full max-w-5xl mx-auto bg-[#121212] border border-brand-katana/30 rounded-2xl overflow-hidden shadow-2xl relative">
@@ -254,7 +253,7 @@
        <div class="w-full md:w-5/12 min-h-[250px] md:h-auto bg-[#151515] relative overflow-hidden flex items-center justify-center">
          <div 
            class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay"
-           style="background-image: url('');"
+           style="background-image: url('https://img.youtube.com/vi/lOiSccM5PGk/maxresdefault.jpg');"
          ></div>
          <div class="relative z-10 p-8 text-center">
            <div class="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-full bg-brand-katana/10 border border-brand-katana/40 flex items-center justify-center mb-4 md:mb-6 shadow-[0_0_30px_rgba(252,180,52,0.2)]">
@@ -301,5 +300,7 @@
  </div>
  <!-- Feature Section END -->
 
+<script src="timeline-utils.js"></script>
+<script src="katana.js"></script>
 
 </body></html>
