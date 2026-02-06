@@ -207,24 +207,24 @@
     </style>
 
 </head>
-<body class="font-sans antialiased selection:bg-nuke selection:text-black overflow-x-hidden" onload="filterTimeline('all')">
+<body class="font-sans antialiased selection:bg-katana selection:text-black overflow-x-hidden" onload="filterTimeline('katana')">
 
 <header class="relative min-h-[30vh] flex items-center justify-center overflow-hidden border-b border-border-dim">
     <div class="relative z-20 container mx-auto px-6 text-center max-w-4xl">
         <h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tighter leading-none text-gray-900 font-display">
-            USD X Foundry <span class="text-transparent bg-clip-text bg-gradient-to-r from-nuke via-gray-800 to-primary"></span>
+            USD X Foundry <span class="text-transparent bg-clip-text bg-gradient-to-r from-katana via-gray-800 to-primary"></span>
         </h1>
         <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed mb-10">
             VFX 오픈 파이프라인의 핵심: Nuke, Katana, Mari의 USD 통합 연대기.
         </p>
         <div class="flex flex-wrap justify-center gap-4 mb-10">
-            <button class="filter-btn filter-btn-all px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest hover:text-black border-transparent hover:border-black/10 active" onclick="filterTimeline('all')">
+            <button class="filter-btn filter-btn-all px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest hover:text-black border-transparent hover:border-black/10" onclick="window.location.href = 'index.html'">
                 <img src="images/F-dot.svg" alt="All" class="w-4 h-4 mr-2 inline-block"> 전 제품
             </button>
             <button class="filter-btn filter-btn-nuke px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2" onclick="window.location.href = 'nuke.html'">
                 <img src="images/ICON_NUKE_yellow.svg" alt="Nuke" class="w-4 h-4"> Nuke
             </button>
-            <button class="filter-btn filter-btn-katana px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2" onclick="window.location.href = 'katana.html'">
+            <button class="filter-btn filter-btn-katana px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2 active" onclick="filterTimeline('katana')">
                 <img src="images/ICON_KATANA_yellow.svg" alt="Katana" class="w-4 h-4"> Katana
             </button>
             <button class="filter-btn filter-btn-mari px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2" onclick="window.location.href = 'mari.html'">
@@ -243,5 +243,63 @@
 </main>
 
 <script src="main.js"></script>
+
+ <!-- Feature Section START -->
+ <div class="relative px-4 md:px-0 mt-12 pb-24">
+    <div class="w-full max-w-5xl mx-auto bg-[#121212] border border-brand-katana/30 rounded-2xl overflow-hidden shadow-2xl relative">
+     <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-brand-katana to-transparent"></div>
+     <div class="flex flex-col md:flex-row">
+       
+       <!-- Left / Top Image Area -->
+       <div class="w-full md:w-5/12 min-h-[250px] md:h-auto bg-[#151515] relative overflow-hidden flex items-center justify-center">
+         <div 
+           class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay"
+           style="background-image: url('');"
+         ></div>
+         <div class="relative z-10 p-8 text-center">
+           <div class="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-full bg-brand-katana/10 border border-brand-katana/40 flex items-center justify-center mb-4 md:mb-6 shadow-[0_0_30px_rgba(252,180,52,0.2)]">
+             <img src="images/ICON_KATANA_yellow.svg" alt="Katana" class="w-8 h-8 md:w-10 md:h-10">
+           </div>
+           <h3 class="text-brand-katana font-bold tracking-wider text-xs md:text-sm uppercase mb-2">Current Release</h3>
+           <p class="text-white text-2xl md:text-3xl font-bold font-display">katana v7.5</p>
+         </div>
+       </div>
+
+       <!-- Right Content Area -->
+       <div class="w-full md:w-7/12 p-6 md:p-14 bg-gradient-to-br from-[#121212] to-[#0a0a0a]">
+         <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">USD Import Fix</h2>
+         <p class="text-gray-500 text-sm mb-6">Released Q4 2025</p>
+         <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-8">
+           Import full USD stages for in-context texture painting, ensuring assets work perfectly in the final shot.
+         </p>
+         
+         <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 mb-10">
+           <!-- List Items with CheckCircle -->
+           <div class="flex items-center gap-3 text-gray-400 text-sm">
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-katana shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+             <span>USD 23.05</span>
+           </div>
+           <div class="flex items-center gap-3 text-gray-400 text-sm">
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-katana shrink-0"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+             <span>Bug Fix</span>
+           </div>
+         </div>
+
+         <div class="flex flex-wrap gap-4">
+           <button class="flex-1 sm:flex-none px-6 py-2.5 bg-brand-katana hover:bg-[#ff9d00] text-black font-bold rounded text-sm transition-colors shadow-lg shadow-brand-katana/20 text-center" onclick="window.open('', '_blank')">
+             Watch Demo
+           </button>
+           <button class="flex-1 sm:flex-none px-6 py-2.5 bg-transparent border border-white/20 text-white font-medium rounded text-sm hover:bg-white/5 transition-colors flex items-center justify-center gap-2" onclick="window.open('https://learn.foundry.com/katana/7.5/Content/release_notes/katana_7_series.html', '_blank')">
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+             Release Notes
+           </button>
+         </div>
+       </div>
+
+     </div>
+   </div>
+ </div>
+ <!-- Feature Section END -->
+
 
 </body></html>
