@@ -1,7 +1,7 @@
 [
     {
         "product": "nuke",
-        "version": "v13.0",
+        "version": "13.0v10",
         "date": "2021-03-25",
         "quarter": "Q1 2021",
         "title": "USD 지원",
@@ -22,7 +22,7 @@
     },
     {
         "product": "nuke",
-        "version": "v13.1",
+        "version": "13.1v5",
         "date": "2021-11-23",
         "quarter": "Q3 2021",
         "title": "3D UX 개선",
@@ -37,11 +37,11 @@
         "image": "https://img.youtube.com/vi/6UgANaX7n2Y/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=6UgANaX7n2Y",
         "status": "Beta",
-        "supported": true
+        "supported": false
     },
     {
         "product": "nuke",
-        "version": "v13.2",
+        "version": "13.2v9",
         "date": "2022-04-14",
         "quarter": "Q1 2022",
         "title": "Hydra Support",
@@ -60,7 +60,7 @@
     },
     {
         "product": "nuke",
-        "version": "v14.0",
+        "version": "14.0v8",
         "date": "2022-12-06",
         "quarter": "Q4 2022",
         "title": "Nuke 14.0: USD기반의 새로운 3D 시스템 도입",
@@ -77,11 +77,11 @@
         "image": "https://img.youtube.com/vi/77Wh7ekKx3E/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=uutRLOJ20Jk",
         "status": "Beta",
-        "supported": true
+        "supported": false
     },
     {
         "product": "nuke",
-        "version": "v15.0",
+        "version": "15.0v8",
         "date": "2023-10-12",
         "quarter": "Q4 2023",
         "title": "USD기반의 새로운 3D 시스템 도입 2단계",
@@ -120,7 +120,7 @@
         "image": "https://img.youtube.com/vi/GiPVGFZmTMo/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=GiPVGFZmTMo",
         "status": "Beta",
-        "supported": false
+        "supported": true
     },
     {
         "product": "nuke",
@@ -141,6 +141,6 @@
         "image": "https://img.youtube.com/vi/YTUm3Ebxo-c/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=YTUm3Ebxo-c",
         "status": "Beta",
-        "supported": false
+        "supported": true
     }
 ]

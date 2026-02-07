@@ -1,7 +1,7 @@
 [
     {
         "product": "mari",
-        "version": "v5.0",
+        "version": "5.0v4",
         "date": "2021-11-18",
         "quarter": "Q4 2021",
         "title": "Built-in USD Plug-ins",
@@ -17,11 +17,11 @@
         "featured": true,
         "image": "https://img.youtube.com/vi/hER4IMvrMsw/hqdefault.jpg",
         "content": "https://www.youtube.com/watch?v=hER4IMvrMsw",
-        "supported": true
+        "supported": false
     },
     {
         "product": "mari",
-        "version": "v6.0",
+        "version": "6.0v3",
         "date": "2022-12-13",
         "quarter": "Q4 2022",
         "title": "USD Lookdev Context",
@@ -40,7 +40,7 @@
     },
     {
         "product": "mari",
-        "version": "v7.0",
+        "version": "7.0v2",
         "date": "2023-12-04",
         "quarter": "Q4 2023",
         "title": "USD Importer 2.0",
@@ -58,17 +58,38 @@
     },
     {
         "product": "mari",
-        "version": "v7.5",
+        "version": "7.1v2",
+        "date": "2024-12-09",
+        "quarter": "Q4 2024",
+        "title": "USD Bug fix",
+        "description": "USD관련 버그 픽스 ID 573557, ID 583692.",
+        "tags": [
+            "USD 23.05",
+            "Bug Fix",
+            "ID 573557",
+            "ID 583692"
+        ],
+        "icon": "images/ICON_MARI_yellow.svg",
+        "link": "https://learn.foundry.com/mari/7.5/Content/release_notes/7.x/Mari_7.1v1_ReleaseNotes.html",
+        "featured": false,
+        "image": "",
+        "content": "",
+        "supported": true
+    },
+    {
+        "product": "mari",
+        "version": "7.5v2",
         "date": "2025-12-03",
         "quarter": "Q4 2025",
         "title": "USD Import Fix",
-        "description": "Import full USD stages for in-context texture painting, ensuring assets work perfectly in the final shot.",
+        "description": "USD 임포터 관련 버그 픽스 ID 549771",
         "tags": [
             "USD 23.05",
-            "Bug Fix"
+            "Bug Fix",
+            "ID 549771"
         ],
         "icon": "images/ICON_MARI_yellow.svg",
-        "link": "https://learn.foundry.com/mari/7.5/Content/release_notes/Mari_7_series.html",
+        "link": "https://learn.foundry.com/mari/7.5/Content/release_notes/7.x/Mari_7.5v1_ReleaseNotes.html",
         "featured": false,
         "image": "",
         "content": "",

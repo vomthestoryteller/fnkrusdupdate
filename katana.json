@@ -1,7 +1,7 @@
 [
     {
         "product": "katana",
-        "version": "v2.6",
+        "version": "2.6v4",
         "date": "2017-05-24",
         "quarter": "Q2 2017",
         "title": "Viewer API",
@@ -18,7 +18,7 @@
     },
     {
         "product": "katana",
-        "version": "v3.0",
+        "version": "3.0v9",
         "date": "2018-05-30",
         "quarter": "Q2 2018",
         "title": "Hydra-Powered Viewer",
@@ -36,7 +36,7 @@
     },
     {
         "product": "katana",
-        "version": "v3.1",
+        "version": "3.1v7",
         "date": "2018-11-20",
         "quarter": "Q4 2018",
         "title": "향상된 Viewer API",
@@ -54,7 +54,7 @@
     },
     {
         "product": "katana",
-        "version": "v3.2",
+        "version": "3.2v6",
         "date": "2019-08-29",
         "quarter": "Q3 2019",
         "title": "Hydra Viewer Beta",
@@ -73,7 +73,7 @@
     },
     {
         "product": "katana",
-        "version": "v3.5",
+        "version": "3.5v5",
         "date": "2019-12-19",
         "quarter": "Q4 2019",
         "title": "Hydra Viewer Beta",
@@ -87,11 +87,11 @@
         "featured": true,
         "image": "https://img.youtube.com/vi/eb6HLXKh4h8/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=eb6HLXKh4h8",
-        "supported": true
+        "supported": false
     },
     {
         "product": "katana",
-        "version": "v3.6",
+        "version": "3.6v5",
         "date": "2020-04-29",
         "quarter": "Q2 2020",
         "title": "Snapping in the Hydra Viewer",
@@ -109,7 +109,7 @@
     },
     {
         "product": "katana",
-        "version": "v4.0",
+        "version": "4.0v8",
         "date": "2020-10-29",
         "quarter": "Q4 2020",
         "title": "Hydra Viewer에 도입된 Lighting Tool",
@@ -125,11 +125,11 @@
         "featured": true,
         "image": "https://img.youtube.com/vi/bY2ed1ayUys/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=bY2ed1ayUys",
-        "supported": true
+        "supported": false
     },
     {
         "product": "katana",
-        "version": "v5.0",
+        "version": "5.0v7",
         "date": "2021-12-13",
         "quarter": "Q4 2021",
         "title": "Viewer에서의 인서턴스 렌더링",
@@ -148,7 +148,7 @@
     },
     {
         "product": "katana",
-        "version": "v6.0",
+        "version": "6.0v6",
         "date": "2022-12-15",
         "quarter": "Q4 2022",
         "title": "Network Material: Material Solo",
@@ -163,11 +163,11 @@
         "featured": true,
         "image": "https://img.youtube.com/vi/h4JCGjTzvzw/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=h4JCGjTzvzw",
-        "supported": false
+        "supported": true
     },
     {
         "product": "katana",
-        "version": "v7.0",
+        "version": "7.0v8",
         "date": "2023-11-01",
         "quarter": "Q4 2022",
         "title": "Native USD 시대의 개막",
@@ -186,7 +186,7 @@
     },
     {
         "product": "katana",
-        "version": "v8.0",
+        "version": "8.0v5",
         "date": "2024-12-09",
         "quarter": "Q4 2024",
         "title": "USD Native Exporting",
@@ -202,6 +202,6 @@
         "featured": true,
         "image": "https://img.youtube.com/vi/lOiSccM5PGk/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=lOiSccM5PGk",
-        "supported": false
+        "supported": true
     }
 ]
