@@ -206,10 +206,9 @@
             }
         }
     </style>
-<script src="timeline-utils.js"></script>
-<script src="nuke.js"></script>
+
 </head>
-<body class="font-sans antialiased selection:bg-nuke selection:text-black overflow-x-hidden">
+<body class="font-sans antialiased selection:bg-nuke selection:text-black overflow-x-hidden" onload="filterTimeline('all')">
 
 <header class="relative min-h-[30vh] flex items-center justify-center overflow-hidden border-b border-border-dim">
     <div class="relative z-20 container mx-auto px-6 text-center max-w-4xl">
@@ -220,7 +219,7 @@
             VFX 오픈 파이프라인의 핵심: Nuke, Katana, Mari의 USD 통합 연대기.
         </p>
         <div class="flex flex-wrap justify-center gap-4 mb-10">
-            <button class="filter-btn filter-btn-all px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest hover:text-black border-transparent hover:border-black/10" onclick="window.location.href = 'index.html'">
+            <button class="filter-btn filter-btn-all px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest hover:text-black border-transparent hover:border-black/10 active" onclick="filterTimeline('all')">
                 <img src="images/F-dot.svg" alt="All" class="w-4 h-4 mr-2 inline-block"> 전 제품
             </button>
             <button class="filter-btn filter-btn-nuke px-6 py-2 rounded-full text-sm font-medium text-gray-500 uppercase tracking-widest flex items-center gap-2 active">
@@ -245,7 +244,7 @@
 </main>
 
  <!-- Feature Section START -->
- <div class="relative w-full mt-12 pb-24 -mx-4 md:-mx-[calc((100vw-100%)/2)]">
+ <div class="relative w-full mt-12 pb-24">
     <div class="w-full bg-[#121212] border border-brand-nuke/30 border-l-0 border-r-0 overflow-hidden shadow-2xl relative">
      <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-brand-nuke to-transparent"></div>
      <div class="flex flex-col md:flex-row">
@@ -257,9 +256,11 @@
            style="background-image: url('https://img.youtube.com/vi/YTUm3Ebxo-c/maxresdefault.jpg');"
          ></div>
          <div class="relative z-10 p-8 text-center">
-           <img src="images/ICON_NUKE_yellow.svg" alt="Nuke" class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 md:mb-6">
-           <h3 class="text-brand-nuke font-bold tracking-wider text-xs md:text-sm uppercase mb-2">최신 버전</h3>
-           <p class="text-white text-2xl md:text-3xl font-bold font-display">Nuke 16.0v8</p>
+           <div class="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-full bg-brand-nuke/10 border border-brand-nuke/40 flex items-center justify-center mb-4 md:mb-6 shadow-[0_0_30px_rgba(252,180,52,0.2)]">
+             <img src="images/ICON_NUKE_yellow.svg" alt="Nuke" class="w-8 h-8 md:w-10 md:h-10">
+           </div>
+           <h3 class="text-brand-nuke font-bold tracking-wider text-xs md:text-sm uppercase mb-2">Current Release</h3>
+           <p class="text-white text-2xl md:text-3xl font-bold font-display">nuke v16.0</p>
          </div>
        </div>
 
@@ -306,6 +307,11 @@
  </div>
  <!-- Feature Section END -->
 
-
+<button id="goToTopBtn" class="fixed bottom-8 right-8 bg-black/80 hover:bg-black text-white p-3 rounded-full shadow-lg transition-all duration-300 z-50 hidden" aria-label="Go to top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+<script src="common.js"></script>
+<script src="timeline-utils.js"></script>
+<script src="nuke.js"></script>
 
 </body></html>
