@@ -203,5 +203,26 @@
         "image": "https://img.youtube.com/vi/lOiSccM5PGk/maxresdefault.jpg",
         "content": "https://www.youtube.com/watch?v=lOiSccM5PGk",
         "supported": true
+    },
+    {
+        "product": "katana",
+        "version": "9.0v1",
+        "date": "2026-02-10",
+        "quarter": "Q1 2026",
+        "title": "UsdSuperLayer",
+        "description": "Katana 9.0은 Katana의 USD 진화 과정을 잇는 차세대 버전으로, 아티스트에게 USD 워크플로우 라이팅에 대한 완벽한 제어권과 유연성을 제공합니다.",
+        "tags": [
+            "USD 24.05",
+            "UsdSuperLayer",
+            "UsdGaffer",
+            "UsdMaterial",
+            "Hydra 2.0 Rendering(alpha)"
+        ],
+        "icon": "images/ICON_KATANA_yellow.svg",
+        "link": "https://learn.foundry.com/katana/9.0v1/Content/release_notes/9.0/Katana_9.0v1_ReleaseNotes.html",
+        "featured": true,
+        "image": "https://img.youtube.com/vi/-QKqKBqh5r8/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=-QKqKBqh5r8",
+        "supported": true
     }
 ]
