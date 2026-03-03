@@ -142,5 +142,26 @@
         "content": "https://www.youtube.com/watch?v=YTUm3Ebxo-c",
         "status": "Beta",
         "supported": true
+    },
+    {
+        "product": "nuke",
+        "version": "v17.0",
+        "date": "2026-02-26",
+        "quarter": "Q1 2026",
+        "title": "USD기반의 새로운 3D 시스템 도입 4단계",
+        "description": "새로운 3D 시스템의 개발이 지속됨에 따라, 당사는 사용자 피드백을 반영하여 여러분이 가장 자주 사용하는 노드들을 업데이트하는 데 주력했습니다. 아울러 이와 관련된 새로운 기능과 워크플로우도 함께 선보입니다.",
+        "tags": [
+            "USD 24.05",
+            "GeoXformPrim",
+            "GeoConstrain",
+            "ScanlineRender2"
+        ],
+        "icon": "images/ICON_NUKE_yellow.svg",
+        "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_17.0.html",
+        "featured": true,
+        "image": "https://img.youtube.com/vi/JuPSYQqXfoE/maxresdefault.jpg",
+        "content": "https://www.youtube.com/watch?v=JuPSYQqXfoE",
+        "status": "Official",
+        "supported": true
     }
 ]
