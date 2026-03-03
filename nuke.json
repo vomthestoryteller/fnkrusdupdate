@@ -148,13 +148,15 @@
         "version": "v17.0",
         "date": "2026-02-26",
         "quarter": "Q1 2026",
-        "title": "USD기반의 새로운 3D 시스템 도입 4단계",
-        "description": "새로운 3D 시스템의 개발이 지속됨에 따라, 당사는 사용자 피드백을 반영하여 여러분이 가장 자주 사용하는 노드들을 업데이트하는 데 주력했습니다. 아울러 이와 관련된 새로운 기능과 워크플로우도 함께 선보입니다.",
+        "title": "현대화된 3D 시스템의 도입",
+        "description": "VFX의 미래를 이끌 기술을 여러분의 합성 툴킷에 추가해 보세요. Splat을 활용한 고품질 3D 렌더링, 인카메라용 매트 페인팅, 또는 하이엔드 VFX 등 어떤 작업을 하든 현대 프로덕션의 요구 사항을 충족하는 동시에 창의적인 제어력을 되찾으십시오.",
         "tags": [
-            "USD 24.05",
-            "GeoXformPrim",
-            "GeoConstrain",
-            "ScanlineRender2"
+            "USD 25.08",
+            "Projections",
+            "Lighting",
+            "Rendering",
+            "Materials&Shading",
+            "Masks&Paths"                        
         ],
         "icon": "images/ICON_NUKE_yellow.svg",
         "link": "https://learn.foundry.com/nuke/content/release_notes/nuke_17.0.html",
